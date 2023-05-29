@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/repositories_implementation/connectivity_repository_impl.dart';
-import '../../../../domain/repository/connectivity_repository.dart';
+import '../../../../../main.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -14,12 +13,13 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    _init();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _init();
+    });
   }
 
   Future<void> _init() async {
-    ConnectivityRepository connectivityRepository =
-        ConnectivityRepositoryImpl();
+    var connectivityRepository = Injector.of(context).connectivityRepository;
     connectivityRepository.hasInternet;
     final hasInternet = await connectivityRepository.hasInternet;
     if (hasInternet) {
