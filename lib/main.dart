@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tv/app/my_app.dart';
 
@@ -8,7 +9,7 @@ import 'app/domain/repository/connectivity_repository.dart';
 
 void main() {
   runApp(Injector(
-    connectivityRepository: ConnectivityRepositoryImpl(),
+    connectivityRepository: ConnectivityRepositoryImpl(Connectivity()),
     authenticationRepository: AuthenticationRepositoryImpl(),
     child: const MyApp(),
   ));
