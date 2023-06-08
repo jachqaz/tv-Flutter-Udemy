@@ -10,12 +10,41 @@ class AuthenticationApi {
   AuthenticationApi(this._client);
 
   Future<String?> createRequestToken() async {
-    final response = await _client
-        .get(Uri.parse('$_baseUrl/authentication/token/new?api_key=$_apiKey'));
-    if (response.statusCode == 200) {
-      final json = Map<String, dynamic>.from(jsonDecode(response.body));
-      return json['request_token'];
+    try {
+      final response = await _client.get(
+          Uri.parse('$_baseUrl/authentication/token/new?api_key=$_apiKey'));
+      if (response.statusCode == 200) {
+        final json = Map<String, dynamic>.from(jsonDecode(response.body));
+        return json['request_token'];
+      }
+      return null;
+    } catch (e) {
+      return null;
     }
-    return null;
+  }
+
+  Future<String?> createSessionWithLogin({
+    required String username,
+    required String password,
+    required String requestToken,
+  }) async {
+    try {
+      final response = await _client.post(
+          Uri.parse(
+              '$_baseUrl/authentication/token/validate_with_login?api_key=$_apiKey'),
+          headers: {'content-type': 'application/json'},
+          body: jsonEncode({
+            'username': 'jach1qaz',
+            'password': '.5nB!PrZsHy2heJ',
+            'request_token': requestToken,
+          }));
+      if (response.statusCode == 200) {
+        final json = Map<String, dynamic>.from(jsonDecode(response.body));
+        return json['request_token'];
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 }
