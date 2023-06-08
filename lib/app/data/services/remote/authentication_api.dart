@@ -9,11 +9,13 @@ class AuthenticationApi {
 
   AuthenticationApi(this._client);
 
-  createRequestToken() async {
-    final response = await _client.get(
-        Uri.parse('$_baseUrl/authentication/token/new?apikey_key=$_apiKey'));
+  Future<String?> createRequestToken() async {
+    final response = await _client
+        .get(Uri.parse('$_baseUrl/authentication/token/new?api_key=$_apiKey'));
     if (response.statusCode == 200) {
-      jsonDecode(response.body);
+      final json = Map<String, dynamic>.from(jsonDecode(response.body));
+      return json['request_token'];
     }
+    return null;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:tv/app/data/services/remote/authentication_api.dart';
 
 import '../../domain/either.dart';
 import '../../domain/enums.dart';
@@ -9,8 +10,9 @@ const _key = 'sessionId';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final FlutterSecureStorage _secureStorage;
+  final AuthenticationApi _authenticationApi;
 
-  AuthenticationRepositoryImpl(this._secureStorage);
+  AuthenticationRepositoryImpl(this._secureStorage, this._authenticationApi);
 
   @override
   Future<User?> getUserData() {
@@ -28,7 +30,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     String username,
     String password,
   ) async {
-    Future.delayed(Duration(seconds: 2));
+    final request_token = await _authenticationApi.createRequestToken();
+    print(request_token);
+    await Future.delayed(Duration(seconds: 2));
     if (username != 'test') {
       return Either.left(SignInFailure.notFound);
     }
