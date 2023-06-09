@@ -105,6 +105,7 @@ class _SignInViewState extends State<SignInView> {
         SignInFailure.notFound: 'Not Found',
         SignInFailure.unauthorized: 'Invalid password',
         SignInFailure.unknown: 'Error',
+        SignInFailure.network: 'Network Error',
       }[failure];
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message!)));

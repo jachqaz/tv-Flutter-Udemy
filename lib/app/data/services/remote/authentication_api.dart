@@ -1,6 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart';
+
+import '../../../domain/either.dart';
+import '../../../domain/enums.dart';
 
 class AuthenticationApi {
   final Client _client;
@@ -23,7 +27,7 @@ class AuthenticationApi {
     }
   }
 
-  Future<String?> createSessionWithLogin({
+  Future<Either<SignInFailure, String>> createSessionWithLogin({
     required String username,
     required String password,
     required String requestToken,
@@ -38,13 +42,22 @@ class AuthenticationApi {
             'password': '.5nB!PrZsHy2heJ',
             'request_token': requestToken,
           }));
-      if (response.statusCode == 200) {
-        final json = Map<String, dynamic>.from(jsonDecode(response.body));
-        return json['request_token'];
+      switch (response.statusCode) {
+        case HttpStatus.ok:
+          final json = Map<String, dynamic>.from(jsonDecode(response.body));
+          return Either.right(json['request_token']);
+        case HttpStatus.unauthorized:
+          return Either.left(SignInFailure.unauthorized);
+        case HttpStatus.notFound:
+          return Either.left(SignInFailure.notFound);
+        default:
+          return Either.left(SignInFailure.unknown);
       }
-      return null;
     } catch (e) {
-      return null;
+      if (e is SocketException) {
+        return Either.left(SignInFailure.network);
+      }
+      return Either.left(SignInFailure.unknown);
     }
   }
 }
