@@ -10,9 +10,14 @@ class Http {
   final String _baseUrl;
   final String _apiKey;
 
-  Http(this._baseUrl, this._apiKey, this._client);
+  Http(
+      {required Client client, required String baseUrl, required String apiKey})
+      : _client = client,
+        _baseUrl = baseUrl,
+        _apiKey = apiKey;
 
-  Future<Either<HttpFailure, String>> request(String path, {
+  Future<Either<HttpFailure, String>> request(
+    String path, {
     HttpMethod method = HttpMethod.get,
     Map<String, String> headers = const {},
     Map<String, String> queryParameters = const {},
@@ -21,7 +26,7 @@ class Http {
   }) async {
     try {
       if (useApiKey) {
-        queryParameters = {...queryParameters, 'apiKey': _apiKey};
+        queryParameters = {...queryParameters, 'api_key': _apiKey};
       }
       Uri url = Uri.parse(
         path.startsWith('http') ? path : '$_baseUrl$path',

@@ -1,27 +1,27 @@
 import 'dart:convert';
-import 'dart:html';
-
-import 'package:tv/app/data/http/http.dart';
+import 'dart:io';
 
 import '../../../domain/either.dart';
 import '../../../domain/enums.dart';
+import '../../http/http.dart';
 
 class AuthenticationApi {
-  // final _baseUrl = 'https://api.themoviedb.org/3';
-  // final _apiKey = 'f16c8506cda4e08300b9149a1ff5cd59';
   final Http _http;
 
   AuthenticationApi(this._http);
 
-  Future<String?> createRequestToken() async {
+  Future<Either<SignInFailure, String>> createRequestToken() async {
     final result = await _http.request(
       '/authentication/token/new',
     );
     return result.when((failure) {
-      return null;
+      if (failure.exception == NetworkException) {
+        return Either.left(SignInFailure.network);
+      }
+      return Either.left(SignInFailure.unknown);
     }, (responseBody) {
       final json = Map<String, dynamic>.from(jsonDecode(responseBody));
-      return json['request_token'] as String;
+      return Either.right(json['request_token']);
     });
   }
 
@@ -39,11 +39,11 @@ class AuthenticationApi {
           'request_token': requestToken,
         });
     return result.when((failure) {
+      if (failure.exception == NetworkException) {
+        return Either.left(SignInFailure.network);
+      }
       if (failure.statusCode != null) {
         switch (failure.statusCode!) {
-          case HttpStatus.ok:
-            final json = Map<String, dynamic>.from(jsonDecode(response.body));
-            return Either.right(json['request_token']);
           case HttpStatus.unauthorized:
             return Either.left(SignInFailure.unauthorized);
           case HttpStatus.notFound:
@@ -51,9 +51,6 @@ class AuthenticationApi {
           default:
             return Either.left(SignInFailure.unknown);
         }
-      }
-      if (failure.exception is NetworkException) {
-        return Either.left(SignInFailure.network);
       }
       return Either.left(SignInFailure.unknown);
     }, (responseBody) {
@@ -64,24 +61,19 @@ class AuthenticationApi {
 
   Future<Either<SignInFailure, String>> createSession(
       String requestToken) async {
-    try {
-      final response = await _client.post(
-          Uri.parse('$_baseUrl/authentication/session/new?api_key=$_apiKey'),
-          headers: {'content-type': 'application/json'},
-          body: jsonEncode({
-            'request_token': requestToken,
-          }));
-      if (response.statusCode == HttpStatus.ok) {
-        final json = Map<String, dynamic>.from(jsonDecode(response.body));
-        final sessionId = json['session_id'] as String;
-        return Either.right(sessionId);
-      }
-      return Either.left(SignInFailure.unknown);
-    } catch (e) {
-      if (e is SocketException) {
+    final result = await _http
+        .request('/authentication/session/new', method: HttpMethod.post, body: {
+      'request_token': requestToken,
+    });
+    return result.when((failure) {
+      if (failure.exception == NetworkException) {
         return Either.left(SignInFailure.network);
       }
       return Either.left(SignInFailure.unknown);
-    }
+    }, (responseBody) {
+      final json = Map<String, dynamic>.from(jsonDecode(responseBody));
+      final sessionId = json['session_id'] as String;
+      return Either.right(sessionId);
+    });
   }
 }

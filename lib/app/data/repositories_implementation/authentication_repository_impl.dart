@@ -30,22 +30,23 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     String username,
     String password,
   ) async {
-    final request_token = await _authenticationApi.createRequestToken();
-    if (request_token == null) {
-      return Either.left(SignInFailure.unknown);
-    }
-    final loginResult = await _authenticationApi.createSessionWithLogin(
-        username: username, password: password, requestToken: request_token);
-    return loginResult.when((failure) {
+    final requestTokenResult = await _authenticationApi.createRequestToken();
+    return requestTokenResult.when((failure) {
       return Either.left(failure);
-    }, (newRequestToken) async {
-      final sessionResult =
-          await _authenticationApi.createSession(newRequestToken);
-      return sessionResult.when((failure) async {
+    }, (requestToken) async {
+      final loginResult = await _authenticationApi.createSessionWithLogin(
+          username: username, password: password, requestToken: requestToken);
+      return loginResult.when((failure) {
         return Either.left(failure);
-      }, (sessionId) async {
-        await _secureStorage.write(key: _key, value: sessionId);
-        return Either.right(User());
+      }, (newRequestToken) async {
+        final sessionResult =
+            await _authenticationApi.createSession(newRequestToken);
+        return sessionResult.when((failure) async {
+          return Either.left(failure);
+        }, (sessionId) async {
+          await _secureStorage.write(key: _key, value: sessionId);
+          return Either.right(User());
+        });
       });
     });
   }
