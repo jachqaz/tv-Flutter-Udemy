@@ -55,7 +55,7 @@ class _SignInViewState extends State<SignInView> {
                     },
                     decoration: InputDecoration(hintText: 'Password'),
                     validator: (text) {
-                      text = text?.replaceAll(' ', '').toLowerCase() ?? '';
+                      text = text?.replaceAll(' ', '') ?? '';
                       if (text.length < 4) {
                         return 'Invalid password';
                       }
