@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart';
@@ -11,11 +12,11 @@ class Http {
 
   Http(this._baseUrl, this._apiKey, this._client);
 
-  Future<Either<HttpFailure, String>> request(
-    String path, {
+  Future<Either<HttpFailure, String>> request(String path, {
     HttpMethod method = HttpMethod.get,
     Map<String, String> headers = const {},
     Map<String, String> queryParameters = const {},
+    Map<String, dynamic> body = const {},
     bool useApiKey = true,
   }) async {
     try {
@@ -29,22 +30,26 @@ class Http {
         url = url.replace(queryParameters: queryParameters);
       }
       headers = {'content-type': 'application/json', ...headers};
+      final bodyString = jsonEncode(body);
       late final Response response;
       switch (method) {
         case HttpMethod.get:
           response = await _client.get(url);
           break;
         case HttpMethod.post:
-          response = await _client.post(url, headers: headers);
+          response =
+              await _client.post(url, headers: headers, body: bodyString);
           break;
         case HttpMethod.patch:
-          response = await _client.patch(url, headers: headers);
+          response =
+              await _client.patch(url, headers: headers, body: bodyString);
           break;
         case HttpMethod.delete:
-          response = await _client.delete(url, headers: headers);
+          response =
+              await _client.delete(url, headers: headers, body: bodyString);
           break;
         case HttpMethod.put:
-          response = await _client.put(url, headers: headers);
+          response = await _client.put(url, headers: headers, body: bodyString);
           break;
       }
       final statusCode = response.statusCode;
