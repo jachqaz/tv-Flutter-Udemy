@@ -13,11 +13,8 @@ class HomeView extends StatelessWidget {
       body: Center(
         child: TextButton(
             onPressed: () async {
-              final authenticationRepository =
-                  Provider.of<AuthenticationRepository>(
-                context,
-                listen: false,
-              );
+              final AuthenticationRepository authenticationRepository =
+                  context.read();
               authenticationRepository.signOut();
               Navigator.pushReplacementNamed(context, Routes.signIn);
             },
