@@ -13,9 +13,6 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  String _username = '', _password = '';
-  bool _fetching = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +28,6 @@ class _SignInViewState extends State<SignInView> {
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   onChanged: (text) {
-                    setState(() {
-                      _username = text.trim().toLowerCase();
-                    });
                   },
                   decoration: InputDecoration(hintText: 'UserName'),
                   validator: (text) {
@@ -50,9 +44,6 @@ class _SignInViewState extends State<SignInView> {
                 TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     onChanged: (text) {
-                      setState(() {
-                        _password = text.replaceAll(' ', '');
-                      });
                     },
                     decoration: InputDecoration(hintText: 'Password'),
                     validator: (text) {
