@@ -7,6 +7,12 @@ import 'package:http/http.dart';
 
 import '../../domain/either.dart';
 
+part 'failure.dart';
+part 'logs.dart';
+part 'parse_response_body.dart';
+
+enum HttpMethod { get, post, patch, delete, put }
+
 class Http {
   final Client _client;
   final String _baseUrl;
@@ -20,7 +26,7 @@ class Http {
 
   Future<Either<HttpFailure, R>> request<R>(
     String path, {
-    required R Function(String responseBody) onSuccess,
+    required R Function(dynamic responseBody) onSuccess,
     HttpMethod method = HttpMethod.get,
     Map<String, String> headers = const {},
     Map<String, String> queryParameters = const {},
@@ -57,7 +63,7 @@ class Http {
           break;
         case HttpMethod.patch:
           response =
-          await _client.patch(url, headers: headers, body: bodyString);
+              await _client.patch(url, headers: headers, body: bodyString);
           break;
         case HttpMethod.delete:
           response =
@@ -68,13 +74,14 @@ class Http {
           break;
       }
       final statusCode = response.statusCode;
+      final responseBody = _parseResponseBody(response.body);
       logs = {
         ...logs,
         'statusCode': statusCode,
-        'responseBody': response.body,
+        'responseBody': _parseResponseBody(response.body),
       };
       if (statusCode >= 200) {
-        return Either.right(onSuccess(response.body));
+        return Either.right(onSuccess(responseBody));
       }
       return Either.left(HttpFailure(statusCode: statusCode));
     } catch (e, s) {
@@ -98,20 +105,8 @@ class Http {
           ...logs,
           'endTime': DateTime.now().toString(),
         };
-        log(const JsonEncoder.withIndent(' ').convert(logs),
-            stackTrace: stackTrace);
+        _printLogs(logs, stackTrace);
       }
     }
   }
 }
-
-class HttpFailure {
-  final int? statusCode;
-  final Object? exception;
-
-  HttpFailure({this.statusCode, this.exception});
-}
-
-class NetworkException {}
-
-enum HttpMethod { get, post, patch, delete, put }

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import '../../../domain/either.dart';
@@ -30,7 +29,7 @@ class AuthenticationApi {
   Future<Either<SignInFailure, String>> createRequestToken() async {
     final result = await _http.request('/authentication/token/new',
         onSuccess: (responseBody) {
-      final json = Map<String, dynamic>.from(jsonDecode(responseBody));
+      final json = responseBody as Map;
       return json['request_token'] as String;
     });
     return result.when(
@@ -50,7 +49,7 @@ class AuthenticationApi {
           'password': '.5nB!PrZsHy2heJ',
           'request_token': requestToken,
         }, onSuccess: (responseBody) {
-      final json = Map<String, dynamic>.from(jsonDecode(responseBody));
+      final json = responseBody as Map;
       return json['request_token'] as String;
     });
     return result.when(
@@ -63,7 +62,7 @@ class AuthenticationApi {
         .request('/authentication/session/new', method: HttpMethod.post, body: {
       'request_token': requestToken,
     }, onSuccess: (responseBody) {
-      final json = Map<String, dynamic>.from(jsonDecode(responseBody));
+      final json = responseBody as Map;
       return json['session_id'] as String;
     });
     return result.when(_handleFailure, (sessionId) => Either.right(sessionId));
