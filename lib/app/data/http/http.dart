@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
 import '../../domain/either.dart';
@@ -25,6 +27,8 @@ class Http {
     Map<String, dynamic> body = const {},
     bool useApiKey = true,
   }) async {
+    Map<String, dynamic> logs = {};
+    StackTrace? stackTrace;
     try {
       if (useApiKey) {
         queryParameters = {...queryParameters, 'api_key': _apiKey};
@@ -37,6 +41,11 @@ class Http {
       }
       headers = {'content-type': 'application/json', ...headers};
       final bodyString = jsonEncode(body);
+      logs = {
+        'url': url.toString(),
+        'method': method.name,
+        'body': body,
+      };
       late final Response response;
       switch (method) {
         case HttpMethod.get:
@@ -48,7 +57,7 @@ class Http {
           break;
         case HttpMethod.patch:
           response =
-              await _client.patch(url, headers: headers, body: bodyString);
+          await _client.patch(url, headers: headers, body: bodyString);
           break;
         case HttpMethod.delete:
           response =
@@ -59,15 +68,39 @@ class Http {
           break;
       }
       final statusCode = response.statusCode;
+      logs = {
+        ...logs,
+        'statusCode': statusCode,
+        'responseBody': response.body,
+      };
       if (statusCode >= 200) {
         return Either.right(onSuccess(response.body));
       }
       return Either.left(HttpFailure(statusCode: statusCode));
-    } catch (e) {
+    } catch (e, s) {
+      stackTrace = s;
+      logs = {
+        ...logs,
+        'startTime': DateTime.now().toString(),
+        'exception': e.runtimeType,
+      };
       if (e is SocketException || e is ClientException) {
+        logs = {
+          ...logs,
+          'exception': e.toString(),
+        };
         return Either.left(HttpFailure(exception: NetworkException));
       }
       return Either.left(HttpFailure(exception: e));
+    } finally {
+      if (kDebugMode) {
+        logs = {
+          ...logs,
+          'endTime': DateTime.now().toString(),
+        };
+        log(const JsonEncoder.withIndent(' ').convert(logs),
+            stackTrace: stackTrace);
+      }
     }
   }
 }
