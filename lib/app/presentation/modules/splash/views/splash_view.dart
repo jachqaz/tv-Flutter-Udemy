@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../domain/repository/account_repository.dart';
 import '../../../../domain/repository/authentication_repository.dart';
 import '../../../../domain/repository/connectivity_repository.dart';
 import '../../../routes/routes.dart';
@@ -25,6 +26,7 @@ class _SplashViewState extends State<SplashView> {
     final routeName = await () async {
       final ConnectivityRepository connectivityRepository = context.read();
       final AuthenticationRepository authenticationRepository = context.read();
+      final AccountRepository accountRepository = context.read();
       final hasInternet = await connectivityRepository.hasInternet;
       if (!hasInternet) {
         return Routes.offline;
@@ -33,7 +35,7 @@ class _SplashViewState extends State<SplashView> {
       if (!isSignedIn) {
         return Routes.signIn;
       }
-      final user = await authenticationRepository.getUserData();
+      final user = await accountRepository.getUserData();
       return user == null ? Routes.signIn : Routes.home;
     }();
     if (mounted) {
