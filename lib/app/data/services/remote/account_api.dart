@@ -9,7 +9,7 @@ class AccountApi {
   Future<User?> getAccount(String sessionId) async {
     final result = await _http.request('/account',
         queryParameters: {'session_id': sessionId}, onSuccess: (json) {
-      return User(id: json['id'], username: json['username']);
+      return User.fromJson(json);
     });
     return result.when((failure) => null, (user) => user);
   }
