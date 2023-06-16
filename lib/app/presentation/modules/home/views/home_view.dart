@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../domain/repository/authentication_repository.dart';
 import '../../../global/controllers/session_controller.dart';
 import '../../../routes/routes.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final SessionController sessionController = context.watch();
@@ -27,11 +31,10 @@ class HomeView extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () async {
-                  final AuthenticationRepository authenticationRepository =
-                      context.read();
-                  authenticationRepository.signOut();
-                  sessionController.signOut();
-                  Navigator.pushReplacementNamed(context, Routes.signIn);
+                  await sessionController.signOut();
+                  if (mounted) {
+                    Navigator.pushReplacementNamed(context, Routes.signIn);
+                  }
                 },
                 child: Text('Sign Out')),
           ],

@@ -42,7 +42,10 @@ void main() {
         create: (context) => AuthenticationRepositoryImpl(
             AuthenticationApi(http), accountApi, sessionService),
       ),
-      ChangeNotifierProvider(create: (context) => SessionController()),
+      ChangeNotifierProvider(
+          create: (context) => SessionController(
+                authenticationRepository: context.read(),
+              )),
     ],
     child: MyApp(),
   ));
