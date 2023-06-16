@@ -9,6 +9,6 @@ class SessionController extends StateNotifier<User?> {
   }
 
   void signOut() {
-    state = null;
+    onlyUpdate(null);
   }
 }

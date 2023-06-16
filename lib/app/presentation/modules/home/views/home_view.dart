@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../domain/repository/authentication_repository.dart';
+import '../../../global/controllers/session_controller.dart';
 import '../../../routes/routes.dart';
 
 class HomeView extends StatelessWidget {
@@ -9,16 +10,32 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SessionController sessionController = context.watch();
+    final user = sessionController.state!;
     return Scaffold(
-      body: Center(
-        child: TextButton(
-            onPressed: () async {
-              final AuthenticationRepository authenticationRepository =
-                  context.read();
-              authenticationRepository.signOut();
-              Navigator.pushReplacementNamed(context, Routes.signIn);
-            },
-            child: Text('Sign Out')),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              user.id.toString() ?? '',
+              style: TextStyle(fontSize: 20),
+            ),
+            Text(
+              user.username ?? '',
+              style: TextStyle(fontSize: 20),
+            ),
+            TextButton(
+                onPressed: () async {
+                  final AuthenticationRepository authenticationRepository =
+                      context.read();
+                  authenticationRepository.signOut();
+                  sessionController.signOut();
+                  Navigator.pushReplacementNamed(context, Routes.signIn);
+                },
+                child: Text('Sign Out')),
+          ],
+        ),
       ),
     );
   }

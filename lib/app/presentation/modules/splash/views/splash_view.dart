@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../../domain/repository/account_repository.dart';
 import '../../../../domain/repository/authentication_repository.dart';
 import '../../../../domain/repository/connectivity_repository.dart';
+import '../../../global/controllers/session_controller.dart';
 import '../../../routes/routes.dart';
 
 class SplashView extends StatefulWidget {
@@ -27,6 +28,7 @@ class _SplashViewState extends State<SplashView> {
       final ConnectivityRepository connectivityRepository = context.read();
       final AuthenticationRepository authenticationRepository = context.read();
       final AccountRepository accountRepository = context.read();
+      final SessionController sessionController = context.read();
       final hasInternet = await connectivityRepository.hasInternet;
       if (!hasInternet) {
         return Routes.offline;
@@ -36,7 +38,11 @@ class _SplashViewState extends State<SplashView> {
         return Routes.signIn;
       }
       final user = await accountRepository.getUserData();
-      return user == null ? Routes.signIn : Routes.home;
+      if (user != null) {
+        sessionController.setUser(user);
+        return Routes.home;
+      }
+      return Routes.signIn;
     }();
     if (mounted) {
       _goTo(routeName);
