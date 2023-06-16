@@ -16,6 +16,7 @@ import 'app/data/services/remote/internet_checker.dart';
 import 'app/domain/repository/account_repository.dart';
 import 'app/domain/repository/authentication_repository.dart';
 import 'app/domain/repository/connectivity_repository.dart';
+import 'app/presentation/global/controllers/session_controller.dart';
 
 void main() {
   final sessionService = SessionService(FlutterSecureStorage());
@@ -41,6 +42,7 @@ void main() {
         create: (context) => AuthenticationRepositoryImpl(
             AuthenticationApi(http), accountApi, sessionService),
       ),
+      ChangeNotifierProvider(create: (context) => SessionController()),
     ],
     child: MyApp(),
   ));
