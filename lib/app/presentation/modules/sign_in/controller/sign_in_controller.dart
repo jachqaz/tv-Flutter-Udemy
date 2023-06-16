@@ -1,9 +1,14 @@
-import 'package:tv/app/presentation/modules/sign_in/controller/sign_in_state.dart';
-
+import '../../../../domain/either.dart';
+import '../../../../domain/enums.dart';
+import '../../../../domain/models/user.dart';
+import '../../../../domain/repository/authentication_repository.dart';
 import '../../../global/state_notifier.dart';
+import 'sign_in_state.dart';
 
 class SignInController extends StateNotifier<SignInState> {
-  SignInController(super.state);
+  SignInController(super.state, {required this.authenticationRepository});
+
+  final AuthenticationRepository authenticationRepository;
 
   void onUsernameChanged(String text) {
     onlyUpdate(state.copyWith(username: text.trim().toLowerCase()));
@@ -13,7 +18,14 @@ class SignInController extends StateNotifier<SignInState> {
     onlyUpdate(state.copyWith(password: text.replaceAll(' ', '')));
   }
 
-  void onFetchingChanged(bool value) {
-    state = state.copyWith(fetching: value);
+  Future<Either<SignInFailure, User>> submit() async {
+    state = state.copyWith(fetching: true);
+    final result = await authenticationRepository.sigIn(
+      state.username,
+      state.password,
+    );
+    result.when(
+        (failure) => state = state.copyWith(fetching: false), (value) => null);
+    return result;
   }
 }
