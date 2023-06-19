@@ -12,8 +12,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       avatarPath: avatarPathFromJson(json['avatar'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserToJson(User instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'username': instance.username,
       'avatar': instance.avatarPath,
