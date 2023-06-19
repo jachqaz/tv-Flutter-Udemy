@@ -7,8 +7,9 @@ part 'user.g.dart';
 class User extends Equatable {
   final int id;
   final String username;
+  final String? avatarPath;
 
-  User({required this.id, required this.username});
+  User({required this.id, required this.username, required this.avatarPath});
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
