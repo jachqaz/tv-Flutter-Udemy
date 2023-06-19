@@ -7,6 +7,7 @@ part 'user.g.dart';
 class User extends Equatable {
   final int id;
   final String username;
+  @JsonKey(name: 'avatar', fromJson: avatarPathFromJson)
   final String? avatarPath;
 
   User({required this.id, required this.username, required this.avatarPath});
@@ -17,4 +18,8 @@ class User extends Equatable {
 
   @override
   List<Object?> get props => [id, username];
+}
+
+String? avatarPathFromJson(Map<String, dynamic> json) {
+  return json['tmdb']?['avatar_path'] as String?;
 }

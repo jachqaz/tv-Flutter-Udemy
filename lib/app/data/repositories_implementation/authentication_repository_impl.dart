@@ -2,7 +2,7 @@ import 'package:tv/app/data/services/remote/authentication_api.dart';
 
 import '../../domain/either.dart';
 import '../../domain/enums.dart';
-import '../../domain/models/user.dart';
+import '../../domain/models/user/user.dart';
 import '../../domain/repository/authentication_repository.dart';
 import '../services/local/session_service.dart';
 import '../services/remote/account_api.dart';
