@@ -18,7 +18,9 @@ class TrendingList extends StatefulWidget {
 }
 
 class _TrendingListState extends State<TrendingList> {
-  late final Future<EitherListMedia> _future;
+  TrendingRepository get _repository => context.read();
+  late Future<EitherListMedia> _future;
+  TimeWindow _timeWindow = TimeWindow.day;
 
   @override
   void initState() {
@@ -34,11 +36,36 @@ class _TrendingListState extends State<TrendingList> {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 15),
-          child: Text(
-            'TRENDING',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+          child: Row(
+            children: [
+              Text(
+                'TRENDING',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Spacer(),
+              DropdownButton<TimeWindow>(
+                  value: _timeWindow,
+                  items: [
+                    DropdownMenuItem(
+                      child: Text('Last 24h'),
+                      value: TimeWindow.day,
+                    ),
+                    DropdownMenuItem(
+                      child: Text('Last week'),
+                      value: TimeWindow.week,
+                    ),
+                  ],
+                  onChanged: (timeWindow) {
+                    if (timeWindow != null) {
+                      setState(() {
+                        _timeWindow = timeWindow;
+                        _future = _repository.getMoviesAndSeries(_timeWindow);
+                      });
+                    }
+                  }),
+            ],
           ),
         ),
         SizedBox(
@@ -51,6 +78,7 @@ class _TrendingListState extends State<TrendingList> {
               final width = contraints.maxHeight * 0.65;
               return Center(
                 child: FutureBuilder<EitherListMedia>(
+                  key: ValueKey(_future),
                   future: _future,
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
@@ -62,7 +90,7 @@ class _TrendingListState extends State<TrendingList> {
                           return ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(
                               width: 10,
-                            ),
+                                ),
                             padding: EdgeInsets.symmetric(horizontal: 15),
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (_, index) {

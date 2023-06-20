@@ -21,11 +21,9 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Media {
   int get id => throw _privateConstructorUsedError;
-
   @JsonKey(readValue: readTitleValue)
   String get title => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
   String get originalTitle => throw _privateConstructorUsedError;
   @JsonKey(name: 'poster_path')
@@ -46,7 +44,6 @@ mixin _$Media {
 abstract class $MediaCopyWith<$Res> {
   factory $MediaCopyWith(Media value, $Res Function(Media) then) =
       _$MediaCopyWithImpl<$Res, Media>;
-
   @useResult
   $Res call(
       {int id,
@@ -294,13 +291,11 @@ abstract class _Media implements Media {
 
   @override
   int get id;
-
   @override
   @JsonKey(readValue: readTitleValue)
   String get title;
   @override
   String get overview;
-
   @override
   @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
   String get originalTitle;
