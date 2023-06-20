@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../typedefs.dart';
+
 part 'user.freezed.dart';
 part 'user.g.dart';
 
@@ -15,7 +17,7 @@ class User with _$User {
     String? avatarPath,
   }) = _User;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory User.fromJson(Json json) => _$UserFromJson(json);
 
   const User._();
 
@@ -24,6 +26,6 @@ class User with _$User {
   }
 }
 
-String? avatarPathFromJson(Map<String, dynamic> json) {
+String? avatarPathFromJson(Json json) {
   return json['tmdb']?['avatar_path'] as String?;
 }

@@ -30,10 +30,10 @@ class Http {
     HttpMethod method = HttpMethod.get,
     Map<String, String> headers = const {},
     Map<String, String> queryParameters = const {},
-    Map<String, dynamic> body = const {},
+    Json body = const {},
     bool useApiKey = true,
   }) async {
-    Map<String, dynamic> logs = {};
+    Json logs = {};
     StackTrace? stackTrace;
     try {
       if (useApiKey) {
