@@ -7,6 +7,7 @@ import '../../../../../domain/failures/http_request/http_request_failure.dart';
 import '../../../../../domain/models/media/media.dart';
 import '../../../../../domain/repository/trending_repository.dart';
 import 'trending_tile.dart';
+import 'trending_time_window.dart';
 
 typedef EitherListMedia = Either<HttpRequestFailure, List<Media>>;
 
@@ -34,40 +35,14 @@ class _TrendingListState extends State<TrendingList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: Row(
-            children: [
-              Text(
-                'TRENDING',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Spacer(),
-              DropdownButton<TimeWindow>(
-                  value: _timeWindow,
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('Last 24h'),
-                      value: TimeWindow.day,
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Last week'),
-                      value: TimeWindow.week,
-                    ),
-                  ],
-                  onChanged: (timeWindow) {
-                    if (timeWindow != null) {
-                      setState(() {
-                        _timeWindow = timeWindow;
-                        _future = _repository.getMoviesAndSeries(_timeWindow);
-                      });
-                    }
-                  }),
-            ],
-          ),
-        ),
+        TrendingTimeWindow(
+            timeWindow: _timeWindow,
+            onChanged: (timeWindow) {
+              setState(() {
+                _timeWindow = timeWindow;
+                _future = _repository.getMoviesAndSeries(_timeWindow);
+              });
+            }),
         SizedBox(
           height: 10,
         ),
@@ -90,7 +65,7 @@ class _TrendingListState extends State<TrendingList> {
                           return ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(
                               width: 10,
-                                ),
+                            ),
                             padding: EdgeInsets.symmetric(horizontal: 15),
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (_, index) {
