@@ -21,14 +21,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   int get id => throw _privateConstructorUsedError;
-
   String get username => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'avatar', fromJson: avatarPathFromJson)
   String? get avatarPath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
@@ -37,7 +34,6 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
-
   @useResult
   $Res call(
       {int id,
@@ -53,7 +49,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -127,11 +122,12 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User implements _User {
-  _$_User(
+class _$_User extends _User {
+  const _$_User(
       {required this.id,
       required this.username,
-      @JsonKey(name: 'avatar', fromJson: avatarPathFromJson) this.avatarPath});
+      @JsonKey(name: 'avatar', fromJson: avatarPathFromJson) this.avatarPath})
+      : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -178,12 +174,14 @@ class _$_User implements _User {
   }
 }
 
-abstract class _User implements User {
-  factory _User(
+abstract class _User extends User {
+  const factory _User(
       {required final int id,
       required final String username,
       @JsonKey(name: 'avatar', fromJson: avatarPathFromJson)
       final String? avatarPath}) = _$_User;
+
+  const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -196,7 +194,6 @@ abstract class _User implements User {
   @override
   @JsonKey(name: 'avatar', fromJson: avatarPathFromJson)
   String? get avatarPath;
-
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
