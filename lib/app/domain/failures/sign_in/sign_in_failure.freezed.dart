@@ -86,7 +86,7 @@ class _$SignInFailureCopyWithImpl<$Res, $Val extends SignInFailure>
     implements $SignInFailureCopyWith<$Res> {
   _$SignInFailureCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;
@@ -343,58 +343,58 @@ abstract class _$$SignInFailureNetworkCopyWith<$Res> {
 /// @nodoc
 class __$$SignInFailureNetworkCopyWithImpl<$Res>
     extends _$SignInFailureCopyWithImpl<$Res, _$SignInFailureNetwork>
-implements _$$SignInFailureNetworkCopyWith<$Res> {
-__$$SignInFailureNetworkCopyWithImpl(_$SignInFailureNetwork _value,
-$Res Function(_$SignInFailureNetwork) _then)
-    : super(_value, _then);
+    implements _$$SignInFailureNetworkCopyWith<$Res> {
+  __$$SignInFailureNetworkCopyWithImpl(_$SignInFailureNetwork _value,
+      $Res Function(_$SignInFailureNetwork) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
 class _$SignInFailureNetwork implements SignInFailureNetwork {
-_$SignInFailureNetwork();
+  _$SignInFailureNetwork();
 
-@override
-String toString() {
-return 'SignInFailure.network()';
-}
+  @override
+  String toString() {
+    return 'SignInFailure.network()';
+  }
 
-@override
-bool operator ==(dynamic other) {
-return identical(this, other) ||
-(other.runtimeType == runtimeType && other is _$SignInFailureNetwork);
-}
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SignInFailureNetwork);
+  }
 
-@override
-int get hashCode => runtimeType.hashCode;
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@override
-@optionalTypeArgs
-TResult when<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
     required TResult Function() notFound,
     required TResult Function() notVerified,
     required TResult Function() network,
     required TResult Function() unauthorized,
     required TResult Function() unknown,
   }) {
-return network();
-}
+    return network();
+  }
 
-@override
-@optionalTypeArgs
-TResult? whenOrNull<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? notFound,
     TResult? Function()? notVerified,
     TResult? Function()? network,
     TResult? Function()? unauthorized,
     TResult? Function()? unknown,
   }) {
-return network?.call();
-}
+    return network?.call();
+  }
 
-@override
-@optionalTypeArgs
-TResult maybeWhen<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notFound,
     TResult Function()? notVerified,
     TResult Function()? network,
@@ -402,39 +402,39 @@ TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
-if (network != null) {
-return network();
-}
-return orElse();
-}
+    if (network != null) {
+      return network();
+    }
+    return orElse();
+  }
 
-@override
-@optionalTypeArgs
-TResult map<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
     required TResult Function(SignInFailureNotFound value) notFound,
     required TResult Function(SignInFailureNotVerified value) notVerified,
     required TResult Function(SignInFailureNetwork value) network,
     required TResult Function(SignInFailureUnauthorized value) unauthorized,
     required TResult Function(SignInFailureUnknown value) unknown,
   }) {
-return network(this);
-}
+    return network(this);
+  }
 
-@override
-@optionalTypeArgs
-TResult? mapOrNull<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SignInFailureNotFound value)? notFound,
     TResult? Function(SignInFailureNotVerified value)? notVerified,
     TResult? Function(SignInFailureNetwork value)? network,
     TResult? Function(SignInFailureUnauthorized value)? unauthorized,
-TResult? Function(SignInFailureUnknown value)? unknown,
-}) {
-return network?.call(this);
-}
+    TResult? Function(SignInFailureUnknown value)? unknown,
+  }) {
+    return network?.call(this);
+  }
 
-@override
-@optionalTypeArgs
-TResult maybeMap<TResult extends Object?>({
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(SignInFailureNotFound value)? notFound,
     TResult Function(SignInFailureNotVerified value)? notVerified,
     TResult Function(SignInFailureNetwork value)? network,
@@ -442,15 +442,15 @@ TResult maybeMap<TResult extends Object?>({
     TResult Function(SignInFailureUnknown value)? unknown,
     required TResult orElse(),
   }) {
-if (network != null) {
-return network(this);
-}
-return orElse();
-}
+    if (network != null) {
+      return network(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class SignInFailureNetwork implements SignInFailure {
-factory SignInFailureNetwork() = _$SignInFailureNetwork;
+  factory SignInFailureNetwork() = _$SignInFailureNetwork;
 }
 
 /// @nodoc
