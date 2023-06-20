@@ -1,6 +1,6 @@
 import 'package:tv/app/domain/either.dart';
 
-import '../failures/sign_in_failure.dart';
+import '../failures/sign_in/sign_in_failure.dart';
 import '../models/user/user.dart';
 
 abstract class AuthenticationRepository {
