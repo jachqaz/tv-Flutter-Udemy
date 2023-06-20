@@ -21,28 +21,20 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Media {
   int get id => throw _privateConstructorUsedError;
-
   String get title => throw _privateConstructorUsedError;
-
   String get overview => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'original_title')
   String get originalTitle => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'poster_path')
   String get posterPath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'media_type')
   String get type => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MediaCopyWith<Media> get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,7 +43,6 @@ mixin _$Media {
 abstract class $MediaCopyWith<$Res> {
   factory $MediaCopyWith(Media value, $Res Function(Media) then) =
       _$MediaCopyWithImpl<$Res, Media>;
-
   @useResult
   $Res call(
       {int id,
@@ -71,7 +62,6 @@ class _$MediaCopyWithImpl<$Res, $Val extends Media>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -128,7 +118,6 @@ class _$MediaCopyWithImpl<$Res, $Val extends Media>
 abstract class _$$_MediaCopyWith<$Res> implements $MediaCopyWith<$Res> {
   factory _$$_MediaCopyWith(_$_Media value, $Res Function(_$_Media) then) =
       __$$_MediaCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -295,33 +284,25 @@ abstract class _Media implements Media {
 
   @override
   int get id;
-
   @override
   String get title;
-
   @override
   String get overview;
-
   @override
   @JsonKey(name: 'original_title')
   String get originalTitle;
-
   @override
   @JsonKey(name: 'poster_path')
   String get posterPath;
-
   @override
   @JsonKey(name: 'backdrop_path')
   String get backdropPath;
-
   @override
   @JsonKey(name: 'media_type')
   String get type;
-
   @override
   @JsonKey(name: 'vote_average')
   double get voteAverage;
-
   @override
   @JsonKey(ignore: true)
   _$$_MediaCopyWith<_$_Media> get copyWith =>

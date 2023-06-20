@@ -71,7 +71,7 @@ class _$EitherCopyWithImpl<L, R, $Res, $Val extends Either<L, R>>
 
   // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 

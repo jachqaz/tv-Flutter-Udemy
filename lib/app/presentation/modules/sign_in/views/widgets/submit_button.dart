@@ -38,6 +38,7 @@ class SubmitButton extends StatelessWidget {
         unauthorized: () => 'Invalid password',
         unknown: () => 'Error',
         network: () => 'Network Error',
+        notVerified: () => 'Email Not Verified',
       );
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));

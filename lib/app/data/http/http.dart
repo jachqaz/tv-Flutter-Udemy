@@ -81,10 +81,13 @@ class Http {
         'statusCode': statusCode,
         'responseBody': _parseResponseBody(response.body),
       };
-      if (statusCode >= 200) {
+      if (statusCode >= 200 && statusCode < 300) {
         return Either.right(onSuccess(responseBody));
       }
-      return Either.left(HttpFailure(statusCode: statusCode));
+      return Either.left(HttpFailure(
+        statusCode: statusCode,
+        data: responseBody,
+      ));
     } catch (e, s) {
       stackTrace = s;
       logs = {

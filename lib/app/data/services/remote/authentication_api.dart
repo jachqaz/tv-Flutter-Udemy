@@ -16,6 +16,10 @@ class AuthenticationApi {
     if (failure.statusCode != null) {
       switch (failure.statusCode!) {
         case HttpStatus.unauthorized:
+          if (failure.data is Map &&
+              (failure.data as Map)['status_code'] == 32) {
+            return Either.left(SignInFailure.notVerified());
+          }
           return Either.left(SignInFailure.unauthorized());
         case HttpStatus.notFound:
           return Either.left(SignInFailure.notFound());
