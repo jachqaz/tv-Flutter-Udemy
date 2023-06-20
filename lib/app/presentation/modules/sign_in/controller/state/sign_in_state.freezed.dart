@@ -17,9 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SignInState {
   String get username => throw _privateConstructorUsedError;
-
   String get password => throw _privateConstructorUsedError;
-
   bool get fetching => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +30,6 @@ abstract class $SignInStateCopyWith<$Res> {
   factory $SignInStateCopyWith(
           SignInState value, $Res Function(SignInState) then) =
       _$SignInStateCopyWithImpl<$Res, SignInState>;
-
   @useResult
   $Res call({String username, String password, bool fetching});
 }
@@ -44,7 +41,6 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -78,7 +74,6 @@ abstract class _$$_SignInStateCopyWith<$Res>
   factory _$$_SignInStateCopyWith(
           _$_SignInState value, $Res Function(_$_SignInState) then) =
       __$$_SignInStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String username, String password, bool fetching});
@@ -165,13 +160,10 @@ abstract class _SignInState implements SignInState {
 
   @override
   String get username;
-
   @override
   String get password;
-
   @override
   bool get fetching;
-
   @override
   @JsonKey(ignore: true)
   _$$_SignInStateCopyWith<_$_SignInState> get copyWith =>
