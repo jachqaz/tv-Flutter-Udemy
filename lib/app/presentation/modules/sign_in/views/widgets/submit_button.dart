@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../domain/enums.dart';
+import '../../../../../domain/failures/sign_in_failure.dart';
 import '../../../../global/controllers/session_controller.dart';
 import '../../../../routes/routes.dart';
 import '../../controller/sign_in_controller.dart';
@@ -35,10 +35,10 @@ class SubmitButton extends StatelessWidget {
     }
     result.when((failure) {
       final message = {
-        SignInFailure.notFound: 'Not Found',
-        SignInFailure.unauthorized: 'Invalid password',
-        SignInFailure.unknown: 'Error',
-        SignInFailure.network: 'Network Error',
+        NotFound: 'Not Found',
+        Unauthorized: 'Invalid password',
+        Unknown: 'Error',
+        Network: 'Network Error',
       }[failure];
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message!)));

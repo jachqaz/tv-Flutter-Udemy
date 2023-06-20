@@ -180,17 +180,14 @@ abstract class _User extends User {
       required final String username,
       @JsonKey(name: 'avatar', fromJson: avatarPathFromJson)
       final String? avatarPath}) = _$_User;
-
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
   int get id;
-
   @override
   String get username;
-
   @override
   @JsonKey(name: 'avatar', fromJson: avatarPathFromJson)
   String? get avatarPath;

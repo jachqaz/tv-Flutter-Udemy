@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import '../../../domain/either.dart';
-import '../../../domain/enums.dart';
+import '../../../domain/failures/sign_in_failure.dart';
 import '../../http/http.dart';
 
 class AuthenticationApi {
@@ -11,19 +11,19 @@ class AuthenticationApi {
 
   Either<SignInFailure, String> _handleFailure(HttpFailure failure) {
     if (failure.exception == NetworkException) {
-      return Either.left(SignInFailure.network);
+      return Either.left(Network());
     }
     if (failure.statusCode != null) {
       switch (failure.statusCode!) {
         case HttpStatus.unauthorized:
-          return Either.left(SignInFailure.unauthorized);
+          return Either.left(Unauthorized());
         case HttpStatus.notFound:
-          return Either.left(SignInFailure.notFound);
+          return Either.left(NotFound());
         default:
-          return Either.left(SignInFailure.unknown);
+          return Either.left(Unknown());
       }
     }
-    return Either.left(SignInFailure.unknown);
+    return Either.left(Unknown());
   }
 
   Future<Either<SignInFailure, String>> createRequestToken() async {
