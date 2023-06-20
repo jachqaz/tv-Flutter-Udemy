@@ -1,6 +1,6 @@
 import 'package:tv/app/data/services/remote/authentication_api.dart';
 
-import '../../domain/either.dart';
+import '../../domain/either/either.dart';
 import '../../domain/failures/sign_in/sign_in_failure.dart';
 import '../../domain/models/user/user.dart';
 import '../../domain/repository/authentication_repository.dart';

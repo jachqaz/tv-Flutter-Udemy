@@ -1,4 +1,4 @@
-import 'package:tv/app/domain/either.dart';
+import 'package:tv/app/domain/either/either.dart';
 
 import '../failures/sign_in/sign_in_failure.dart';
 import '../models/user/user.dart';
