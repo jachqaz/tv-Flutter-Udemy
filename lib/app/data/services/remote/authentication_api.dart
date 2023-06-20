@@ -11,19 +11,19 @@ class AuthenticationApi {
 
   Either<SignInFailure, String> _handleFailure(HttpFailure failure) {
     if (failure.exception == NetworkException) {
-      return Either.left(Network());
+      return Either.left(SignInFailure.network());
     }
     if (failure.statusCode != null) {
       switch (failure.statusCode!) {
         case HttpStatus.unauthorized:
-          return Either.left(Unauthorized());
+          return Either.left(SignInFailure.unauthorized());
         case HttpStatus.notFound:
-          return Either.left(NotFound());
+          return Either.left(SignInFailure.notFound());
         default:
-          return Either.left(Unknown());
+          return Either.left(SignInFailure.unknown());
       }
     }
-    return Either.left(Unknown());
+    return Either.left(SignInFailure.unknown());
   }
 
   Future<Either<SignInFailure, String>> createRequestToken() async {
@@ -33,7 +33,8 @@ class AuthenticationApi {
       return json['request_token'] as String;
     });
     return result.when(
-        _handleFailure, (requestToken) => Either.right(requestToken));
+        left: _handleFailure,
+        right: (requestToken) => Either.right(requestToken));
   }
 
   Future<Either<SignInFailure, String>> createSessionWithLogin({
@@ -53,7 +54,8 @@ class AuthenticationApi {
       return json['request_token'] as String;
     });
     return result.when(
-        _handleFailure, (newRequestToken) => Either.right(newRequestToken));
+        left: _handleFailure,
+        right: (newRequestToken) => Either.right(newRequestToken));
   }
 
   Future<Either<SignInFailure, String>> createSession(
@@ -65,6 +67,7 @@ class AuthenticationApi {
       final json = responseBody as Map;
       return json['session_id'] as String;
     });
-    return result.when(_handleFailure, (sessionId) => Either.right(sessionId));
+    return result.when(
+        left: _handleFailure, right: (sessionId) => Either.right(sessionId));
   }
 }

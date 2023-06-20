@@ -25,7 +25,8 @@ class SignInController extends StateNotifier<SignInState> {
       state.password,
     );
     result.when(
-        (failure) => state = state.copyWith(fetching: false), (value) => null);
+        left: (failure) => state = state.copyWith(fetching: false),
+        right: (value) => null);
     return result;
   }
 }

@@ -32,7 +32,7 @@ class SubmitButton extends StatelessWidget {
     if (!controller.mounted) {
       return;
     }
-    result.when((failure) {
+    result.when(left: (failure) {
       final message = failure.when(
         notFound: () => 'Not Found',
         unauthorized: () => 'Invalid password',
@@ -41,7 +41,7 @@ class SubmitButton extends StatelessWidget {
       );
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
-    }, (user) {
+    }, right: (user) {
       final SessionController sessionController = context.read();
       sessionController.setUser(user);
       Navigator.pushReplacementNamed(context, Routes.home);

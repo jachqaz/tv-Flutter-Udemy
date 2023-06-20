@@ -11,6 +11,6 @@ class AccountApi {
         queryParameters: {'session_id': sessionId}, onSuccess: (json) {
       return User.fromJson(json);
     });
-    return result.when((failure) => null, (user) => user);
+    return result.when(left: (failure) => null, right: (user) => user);
   }
 }

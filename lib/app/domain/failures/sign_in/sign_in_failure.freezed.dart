@@ -24,7 +24,6 @@ mixin _$SignInFailure {
     required TResult Function() unknown,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? notFound,
@@ -42,30 +41,29 @@ mixin _$SignInFailure {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NotFound value) notFound,
-    required TResult Function(Network value) network,
-    required TResult Function(Unauthorized value) unauthorized,
-    required TResult Function(Unknown value) unknown,
+    required TResult Function(SignInFailureNotFound value) notFound,
+    required TResult Function(SignInFailureNetwork value) network,
+    required TResult Function(SignInFailureUnauthorized value) unauthorized,
+    required TResult Function(SignInFailureUnknown value) unknown,
   }) =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NotFound value)? notFound,
-    TResult? Function(Network value)? network,
-    TResult? Function(Unauthorized value)? unauthorized,
-    TResult? Function(Unknown value)? unknown,
+    TResult? Function(SignInFailureNotFound value)? notFound,
+    TResult? Function(SignInFailureNetwork value)? network,
+    TResult? Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult? Function(SignInFailureUnknown value)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NotFound value)? notFound,
-    TResult Function(Network value)? network,
-    TResult Function(Unauthorized value)? unauthorized,
-    TResult Function(Unknown value)? unknown,
+    TResult Function(SignInFailureNotFound value)? notFound,
+    TResult Function(SignInFailureNetwork value)? network,
+    TResult Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult Function(SignInFailureUnknown value)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,24 +88,25 @@ class _$SignInFailureCopyWithImpl<$Res, $Val extends SignInFailure>
 }
 
 /// @nodoc
-abstract class _$$NotFoundCopyWith<$Res> {
-  factory _$$NotFoundCopyWith(
-          _$NotFound value, $Res Function(_$NotFound) then) =
-      __$$NotFoundCopyWithImpl<$Res>;
+abstract class _$$SignInFailureNotFoundCopyWith<$Res> {
+  factory _$$SignInFailureNotFoundCopyWith(_$SignInFailureNotFound value,
+          $Res Function(_$SignInFailureNotFound) then) =
+      __$$SignInFailureNotFoundCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NotFoundCopyWithImpl<$Res>
-    extends _$SignInFailureCopyWithImpl<$Res, _$NotFound>
-    implements _$$NotFoundCopyWith<$Res> {
-  __$$NotFoundCopyWithImpl(_$NotFound _value, $Res Function(_$NotFound) _then)
+class __$$SignInFailureNotFoundCopyWithImpl<$Res>
+    extends _$SignInFailureCopyWithImpl<$Res, _$SignInFailureNotFound>
+    implements _$$SignInFailureNotFoundCopyWith<$Res> {
+  __$$SignInFailureNotFoundCopyWithImpl(_$SignInFailureNotFound _value,
+      $Res Function(_$SignInFailureNotFound) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$NotFound implements NotFound {
-  _$NotFound();
+class _$SignInFailureNotFound implements SignInFailureNotFound {
+  _$SignInFailureNotFound();
 
   @override
   String toString() {
@@ -117,7 +116,7 @@ class _$NotFound implements NotFound {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NotFound);
+        (other.runtimeType == runtimeType && other is _$SignInFailureNotFound);
   }
 
   @override
@@ -163,10 +162,10 @@ class _$NotFound implements NotFound {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NotFound value) notFound,
-    required TResult Function(Network value) network,
-    required TResult Function(Unauthorized value) unauthorized,
-    required TResult Function(Unknown value) unknown,
+    required TResult Function(SignInFailureNotFound value) notFound,
+    required TResult Function(SignInFailureNetwork value) network,
+    required TResult Function(SignInFailureUnauthorized value) unauthorized,
+    required TResult Function(SignInFailureUnknown value) unknown,
   }) {
     return notFound(this);
   }
@@ -174,10 +173,10 @@ class _$NotFound implements NotFound {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NotFound value)? notFound,
-    TResult? Function(Network value)? network,
-    TResult? Function(Unauthorized value)? unauthorized,
-    TResult? Function(Unknown value)? unknown,
+    TResult? Function(SignInFailureNotFound value)? notFound,
+    TResult? Function(SignInFailureNetwork value)? network,
+    TResult? Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult? Function(SignInFailureUnknown value)? unknown,
   }) {
     return notFound?.call(this);
   }
@@ -185,10 +184,10 @@ class _$NotFound implements NotFound {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NotFound value)? notFound,
-    TResult Function(Network value)? network,
-    TResult Function(Unauthorized value)? unauthorized,
-    TResult Function(Unknown value)? unknown,
+    TResult Function(SignInFailureNotFound value)? notFound,
+    TResult Function(SignInFailureNetwork value)? network,
+    TResult Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult Function(SignInFailureUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -198,28 +197,30 @@ class _$NotFound implements NotFound {
   }
 }
 
-abstract class NotFound implements SignInFailure {
-  factory NotFound() = _$NotFound;
+abstract class SignInFailureNotFound implements SignInFailure {
+  factory SignInFailureNotFound() = _$SignInFailureNotFound;
 }
 
 /// @nodoc
-abstract class _$$NetworkCopyWith<$Res> {
-  factory _$$NetworkCopyWith(_$Network value, $Res Function(_$Network) then) =
-      __$$NetworkCopyWithImpl<$Res>;
+abstract class _$$SignInFailureNetworkCopyWith<$Res> {
+  factory _$$SignInFailureNetworkCopyWith(_$SignInFailureNetwork value,
+          $Res Function(_$SignInFailureNetwork) then) =
+      __$$SignInFailureNetworkCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NetworkCopyWithImpl<$Res>
-    extends _$SignInFailureCopyWithImpl<$Res, _$Network>
-    implements _$$NetworkCopyWith<$Res> {
-  __$$NetworkCopyWithImpl(_$Network _value, $Res Function(_$Network) _then)
+class __$$SignInFailureNetworkCopyWithImpl<$Res>
+    extends _$SignInFailureCopyWithImpl<$Res, _$SignInFailureNetwork>
+    implements _$$SignInFailureNetworkCopyWith<$Res> {
+  __$$SignInFailureNetworkCopyWithImpl(_$SignInFailureNetwork _value,
+      $Res Function(_$SignInFailureNetwork) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Network implements Network {
-  _$Network();
+class _$SignInFailureNetwork implements SignInFailureNetwork {
+  _$SignInFailureNetwork();
 
   @override
   String toString() {
@@ -229,7 +230,7 @@ class _$Network implements Network {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Network);
+        (other.runtimeType == runtimeType && other is _$SignInFailureNetwork);
   }
 
   @override
@@ -275,10 +276,10 @@ class _$Network implements Network {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NotFound value) notFound,
-    required TResult Function(Network value) network,
-    required TResult Function(Unauthorized value) unauthorized,
-    required TResult Function(Unknown value) unknown,
+    required TResult Function(SignInFailureNotFound value) notFound,
+    required TResult Function(SignInFailureNetwork value) network,
+    required TResult Function(SignInFailureUnauthorized value) unauthorized,
+    required TResult Function(SignInFailureUnknown value) unknown,
   }) {
     return network(this);
   }
@@ -286,10 +287,10 @@ class _$Network implements Network {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NotFound value)? notFound,
-    TResult? Function(Network value)? network,
-    TResult? Function(Unauthorized value)? unauthorized,
-    TResult? Function(Unknown value)? unknown,
+    TResult? Function(SignInFailureNotFound value)? notFound,
+    TResult? Function(SignInFailureNetwork value)? network,
+    TResult? Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult? Function(SignInFailureUnknown value)? unknown,
   }) {
     return network?.call(this);
   }
@@ -297,10 +298,10 @@ class _$Network implements Network {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NotFound value)? notFound,
-    TResult Function(Network value)? network,
-    TResult Function(Unauthorized value)? unauthorized,
-    TResult Function(Unknown value)? unknown,
+    TResult Function(SignInFailureNotFound value)? notFound,
+    TResult Function(SignInFailureNetwork value)? network,
+    TResult Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult Function(SignInFailureUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -310,30 +311,31 @@ class _$Network implements Network {
   }
 }
 
-abstract class Network implements SignInFailure {
-  factory Network() = _$Network;
+abstract class SignInFailureNetwork implements SignInFailure {
+  factory SignInFailureNetwork() = _$SignInFailureNetwork;
 }
 
 /// @nodoc
-abstract class _$$UnauthorizedCopyWith<$Res> {
-  factory _$$UnauthorizedCopyWith(
-          _$Unauthorized value, $Res Function(_$Unauthorized) then) =
-      __$$UnauthorizedCopyWithImpl<$Res>;
+abstract class _$$SignInFailureUnauthorizedCopyWith<$Res> {
+  factory _$$SignInFailureUnauthorizedCopyWith(
+          _$SignInFailureUnauthorized value,
+          $Res Function(_$SignInFailureUnauthorized) then) =
+      __$$SignInFailureUnauthorizedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UnauthorizedCopyWithImpl<$Res>
-    extends _$SignInFailureCopyWithImpl<$Res, _$Unauthorized>
-    implements _$$UnauthorizedCopyWith<$Res> {
-  __$$UnauthorizedCopyWithImpl(
-      _$Unauthorized _value, $Res Function(_$Unauthorized) _then)
+class __$$SignInFailureUnauthorizedCopyWithImpl<$Res>
+    extends _$SignInFailureCopyWithImpl<$Res, _$SignInFailureUnauthorized>
+    implements _$$SignInFailureUnauthorizedCopyWith<$Res> {
+  __$$SignInFailureUnauthorizedCopyWithImpl(_$SignInFailureUnauthorized _value,
+      $Res Function(_$SignInFailureUnauthorized) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Unauthorized implements Unauthorized {
-  _$Unauthorized();
+class _$SignInFailureUnauthorized implements SignInFailureUnauthorized {
+  _$SignInFailureUnauthorized();
 
   @override
   String toString() {
@@ -343,7 +345,8 @@ class _$Unauthorized implements Unauthorized {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Unauthorized);
+        (other.runtimeType == runtimeType &&
+            other is _$SignInFailureUnauthorized);
   }
 
   @override
@@ -389,10 +392,10 @@ class _$Unauthorized implements Unauthorized {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NotFound value) notFound,
-    required TResult Function(Network value) network,
-    required TResult Function(Unauthorized value) unauthorized,
-    required TResult Function(Unknown value) unknown,
+    required TResult Function(SignInFailureNotFound value) notFound,
+    required TResult Function(SignInFailureNetwork value) network,
+    required TResult Function(SignInFailureUnauthorized value) unauthorized,
+    required TResult Function(SignInFailureUnknown value) unknown,
   }) {
     return unauthorized(this);
   }
@@ -400,10 +403,10 @@ class _$Unauthorized implements Unauthorized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NotFound value)? notFound,
-    TResult? Function(Network value)? network,
-    TResult? Function(Unauthorized value)? unauthorized,
-    TResult? Function(Unknown value)? unknown,
+    TResult? Function(SignInFailureNotFound value)? notFound,
+    TResult? Function(SignInFailureNetwork value)? network,
+    TResult? Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult? Function(SignInFailureUnknown value)? unknown,
   }) {
     return unauthorized?.call(this);
   }
@@ -411,10 +414,10 @@ class _$Unauthorized implements Unauthorized {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NotFound value)? notFound,
-    TResult Function(Network value)? network,
-    TResult Function(Unauthorized value)? unauthorized,
-    TResult Function(Unknown value)? unknown,
+    TResult Function(SignInFailureNotFound value)? notFound,
+    TResult Function(SignInFailureNetwork value)? network,
+    TResult Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult Function(SignInFailureUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -424,28 +427,30 @@ class _$Unauthorized implements Unauthorized {
   }
 }
 
-abstract class Unauthorized implements SignInFailure {
-  factory Unauthorized() = _$Unauthorized;
+abstract class SignInFailureUnauthorized implements SignInFailure {
+  factory SignInFailureUnauthorized() = _$SignInFailureUnauthorized;
 }
 
 /// @nodoc
-abstract class _$$UnknownCopyWith<$Res> {
-  factory _$$UnknownCopyWith(_$Unknown value, $Res Function(_$Unknown) then) =
-      __$$UnknownCopyWithImpl<$Res>;
+abstract class _$$SignInFailureUnknownCopyWith<$Res> {
+  factory _$$SignInFailureUnknownCopyWith(_$SignInFailureUnknown value,
+          $Res Function(_$SignInFailureUnknown) then) =
+      __$$SignInFailureUnknownCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UnknownCopyWithImpl<$Res>
-    extends _$SignInFailureCopyWithImpl<$Res, _$Unknown>
-    implements _$$UnknownCopyWith<$Res> {
-  __$$UnknownCopyWithImpl(_$Unknown _value, $Res Function(_$Unknown) _then)
+class __$$SignInFailureUnknownCopyWithImpl<$Res>
+    extends _$SignInFailureCopyWithImpl<$Res, _$SignInFailureUnknown>
+    implements _$$SignInFailureUnknownCopyWith<$Res> {
+  __$$SignInFailureUnknownCopyWithImpl(_$SignInFailureUnknown _value,
+      $Res Function(_$SignInFailureUnknown) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Unknown implements Unknown {
-  _$Unknown();
+class _$SignInFailureUnknown implements SignInFailureUnknown {
+  _$SignInFailureUnknown();
 
   @override
   String toString() {
@@ -455,7 +460,7 @@ class _$Unknown implements Unknown {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Unknown);
+        (other.runtimeType == runtimeType && other is _$SignInFailureUnknown);
   }
 
   @override
@@ -501,10 +506,10 @@ class _$Unknown implements Unknown {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(NotFound value) notFound,
-    required TResult Function(Network value) network,
-    required TResult Function(Unauthorized value) unauthorized,
-    required TResult Function(Unknown value) unknown,
+    required TResult Function(SignInFailureNotFound value) notFound,
+    required TResult Function(SignInFailureNetwork value) network,
+    required TResult Function(SignInFailureUnauthorized value) unauthorized,
+    required TResult Function(SignInFailureUnknown value) unknown,
   }) {
     return unknown(this);
   }
@@ -512,10 +517,10 @@ class _$Unknown implements Unknown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NotFound value)? notFound,
-    TResult? Function(Network value)? network,
-    TResult? Function(Unauthorized value)? unauthorized,
-    TResult? Function(Unknown value)? unknown,
+    TResult? Function(SignInFailureNotFound value)? notFound,
+    TResult? Function(SignInFailureNetwork value)? network,
+    TResult? Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult? Function(SignInFailureUnknown value)? unknown,
   }) {
     return unknown?.call(this);
   }
@@ -523,10 +528,10 @@ class _$Unknown implements Unknown {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(NotFound value)? notFound,
-    TResult Function(Network value)? network,
-    TResult Function(Unauthorized value)? unauthorized,
-    TResult Function(Unknown value)? unknown,
+    TResult Function(SignInFailureNotFound value)? notFound,
+    TResult Function(SignInFailureNetwork value)? network,
+    TResult Function(SignInFailureUnauthorized value)? unauthorized,
+    TResult Function(SignInFailureUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -536,6 +541,6 @@ class _$Unknown implements Unknown {
   }
 }
 
-abstract class Unknown implements SignInFailure {
-  factory Unknown() = _$Unknown;
+abstract class SignInFailureUnknown implements SignInFailure {
+  factory SignInFailureUnknown() = _$SignInFailureUnknown;
 }

@@ -1,26 +1,10 @@
-class Either<Left, Right> {
-  final Left? _left;
-  final Right? _right;
-  final bool isLeft;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Either._(this._left, this._right, this.isLeft);
+part 'either.freezed.dart';
 
-  factory Either.left(Left failure) {
-    return Either._(failure, null, true);
-  }
+@freezed
+class Either<L, R> with _$Either<L, R> {
+  factory Either.left(L value) = Left;
 
-  factory Either.right(Right value) {
-    return Either._(null, value, false);
-  }
-
-  T when<T>(
-    T Function(Left) left,
-    T Function(Right) right,
-  ) {
-    if (isLeft) {
-      return left(_left as Left);
-    } else {
-      return right(_right as Right);
-    }
-  }
+  factory Either.right(R value) = Right;
 }
