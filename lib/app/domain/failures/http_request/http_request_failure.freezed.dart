@@ -24,7 +24,6 @@ mixin _$HttpRequestFailure {
     required TResult Function() unknown,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? notFound,
@@ -42,7 +41,6 @@ mixin _$HttpRequestFailure {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(HttpRequestFailureNotFound value) notFound,
@@ -52,7 +50,6 @@ mixin _$HttpRequestFailure {
     required TResult Function(HttpRequestFailureUnknown value) unknown,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(HttpRequestFailureNotFound value)? notFound,
@@ -84,7 +81,7 @@ class _$HttpRequestFailureCopyWithImpl<$Res, $Val extends HttpRequestFailure>
     implements $HttpRequestFailureCopyWith<$Res> {
   _$HttpRequestFailureCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;

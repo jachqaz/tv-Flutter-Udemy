@@ -21,9 +21,12 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Media {
   int get id => throw _privateConstructorUsedError;
+
+  @JsonKey(readValue: readTitleValue)
   String get title => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
-  @JsonKey(name: 'original_title')
+
+  @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
   String get originalTitle => throw _privateConstructorUsedError;
   @JsonKey(name: 'poster_path')
   String get posterPath => throw _privateConstructorUsedError;
@@ -43,12 +46,14 @@ mixin _$Media {
 abstract class $MediaCopyWith<$Res> {
   factory $MediaCopyWith(Media value, $Res Function(Media) then) =
       _$MediaCopyWithImpl<$Res, Media>;
+
   @useResult
   $Res call(
       {int id,
-      String title,
+      @JsonKey(readValue: readTitleValue) String title,
       String overview,
-      @JsonKey(name: 'original_title') String originalTitle,
+      @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
+      String originalTitle,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'backdrop_path') String backdropPath,
       @JsonKey(name: 'media_type') String type,
@@ -118,13 +123,15 @@ class _$MediaCopyWithImpl<$Res, $Val extends Media>
 abstract class _$$_MediaCopyWith<$Res> implements $MediaCopyWith<$Res> {
   factory _$$_MediaCopyWith(_$_Media value, $Res Function(_$_Media) then) =
       __$$_MediaCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
       {int id,
-      String title,
+      @JsonKey(readValue: readTitleValue) String title,
       String overview,
-      @JsonKey(name: 'original_title') String originalTitle,
+      @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
+      String originalTitle,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'backdrop_path') String backdropPath,
       @JsonKey(name: 'media_type') String type,
@@ -191,9 +198,10 @@ class __$$_MediaCopyWithImpl<$Res> extends _$MediaCopyWithImpl<$Res, _$_Media>
 class _$_Media implements _Media {
   _$_Media(
       {required this.id,
-      required this.title,
+      @JsonKey(readValue: readTitleValue) required this.title,
       required this.overview,
-      @JsonKey(name: 'original_title') required this.originalTitle,
+      @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
+      required this.originalTitle,
       @JsonKey(name: 'poster_path') required this.posterPath,
       @JsonKey(name: 'backdrop_path') required this.backdropPath,
       @JsonKey(name: 'media_type') required this.type,
@@ -205,11 +213,12 @@ class _$_Media implements _Media {
   @override
   final int id;
   @override
+  @JsonKey(readValue: readTitleValue)
   final String title;
   @override
   final String overview;
   @override
-  @JsonKey(name: 'original_title')
+  @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
   final String originalTitle;
   @override
   @JsonKey(name: 'poster_path')
@@ -271,9 +280,10 @@ class _$_Media implements _Media {
 abstract class _Media implements Media {
   factory _Media(
           {required final int id,
-          required final String title,
+          @JsonKey(readValue: readTitleValue) required final String title,
           required final String overview,
-          @JsonKey(name: 'original_title') required final String originalTitle,
+          @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
+          required final String originalTitle,
           @JsonKey(name: 'poster_path') required final String posterPath,
           @JsonKey(name: 'backdrop_path') required final String backdropPath,
           @JsonKey(name: 'media_type') required final String type,
@@ -284,12 +294,15 @@ abstract class _Media implements Media {
 
   @override
   int get id;
+
   @override
+  @JsonKey(readValue: readTitleValue)
   String get title;
   @override
   String get overview;
+
   @override
-  @JsonKey(name: 'original_title')
+  @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
   String get originalTitle;
   @override
   @JsonKey(name: 'poster_path')

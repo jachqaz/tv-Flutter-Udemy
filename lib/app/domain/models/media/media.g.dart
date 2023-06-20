@@ -8,9 +8,9 @@ part of 'media.dart';
 
 _$_Media _$$_MediaFromJson(Map<String, dynamic> json) => _$_Media(
       id: json['id'] as int,
-      title: json['title'] as String,
+      title: readTitleValue(json, 'title') as String,
       overview: json['overview'] as String,
-      originalTitle: json['original_title'] as String,
+      originalTitle: readOriginalTitleValue(json, 'original_title') as String,
       posterPath: json['poster_path'] as String,
       backdropPath: json['backdrop_path'] as String,
       type: json['media_type'] as String,

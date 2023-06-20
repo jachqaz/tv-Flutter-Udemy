@@ -17,7 +17,7 @@ class TrendingApi {
         onSuccess: (json) {
       final list = List<Json>.from(json['results']);
       return list
-          .where((e) => e['media_type'] != 'person' && e['title'] != null)
+          .where((e) => e['media_type'] != 'person')
           .map((e) => Media.fromJson(e))
           .toList();
     });
