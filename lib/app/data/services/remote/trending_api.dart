@@ -15,9 +15,9 @@ class TrendingApi {
       TimeWindow timeWindow) async {
     final result = await _http.request('/trending/all/${timeWindow.name}',
         onSuccess: (json) {
-      final list = json['result'] as List<Json>;
+      final list = List<Json>.from(json['results']);
       return list
-          .where((e) => e['media_type'] != 'person')
+          .where((e) => e['media_type'] != 'person' && e['title'] != null)
           .map((e) => Media.fromJson(e))
           .toList();
     });
