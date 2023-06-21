@@ -18,11 +18,19 @@ class TrendingPerformers extends StatefulWidget {
 
 class _TrendingPerformersState extends State<TrendingPerformers> {
   late Future<EitherListPerformer> _future;
+  late final PageController _pageController;
 
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(viewportFraction: 0.8, initialPage: 1);
     _future = context.read<TrendingRepository>().getPerformers();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -38,13 +46,29 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
             }
             return snapshot.data!.when(
               left: (failure) => Text('Error'),
-              right: (list) => PageView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: list.length,
-                itemBuilder: (context, index) {
-                  final performer = list[index];
-                  return PerformerTile(performer: performer);
-                },
+              right: (list) => Column(
+                children: [
+                  Expanded(
+                    child: PageView.builder(
+                      controller: _pageController,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        final performer = list[index];
+                        return PerformerTile(performer: performer);
+                      },
+                    ),
+                  ),
+                  AnimatedBuilder(
+                      animation: _pageController,
+                      builder: (_, __) {
+                        final currentCard = _pageController.page?.toInt() ?? 1;
+                        return Text('${currentCard + 1}/${list.length}');
+                      }),
+                  SizedBox(
+                    height: 10,
+                  )
+                ],
               ),
             );
           }),
