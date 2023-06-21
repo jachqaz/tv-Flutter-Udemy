@@ -16,6 +16,9 @@ class _HomeViewState extends State<HomeView> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(
+              height: 10,
+            ),
             TrendingList(),
           ],
         ),

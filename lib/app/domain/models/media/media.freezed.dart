@@ -30,8 +30,10 @@ mixin _$Media {
   String get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'media_type')
-  String get type => throw _privateConstructorUsedError;
+  MediaType get type => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
 
@@ -44,6 +46,7 @@ mixin _$Media {
 abstract class $MediaCopyWith<$Res> {
   factory $MediaCopyWith(Media value, $Res Function(Media) then) =
       _$MediaCopyWithImpl<$Res, Media>;
+
   @useResult
   $Res call(
       {int id,
@@ -53,7 +56,7 @@ abstract class $MediaCopyWith<$Res> {
       String originalTitle,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      @JsonKey(name: 'media_type') String type,
+      @JsonKey(name: 'media_type') MediaType type,
       @JsonKey(name: 'vote_average') double voteAverage});
 }
 
@@ -107,7 +110,7 @@ class _$MediaCopyWithImpl<$Res, $Val extends Media>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MediaType,
       voteAverage: null == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -131,7 +134,7 @@ abstract class _$$_MediaCopyWith<$Res> implements $MediaCopyWith<$Res> {
       String originalTitle,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      @JsonKey(name: 'media_type') String type,
+      @JsonKey(name: 'media_type') MediaType type,
       @JsonKey(name: 'vote_average') double voteAverage});
 }
 
@@ -181,7 +184,7 @@ class __$$_MediaCopyWithImpl<$Res> extends _$MediaCopyWithImpl<$Res, _$_Media>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MediaType,
       voteAverage: null == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -225,7 +228,7 @@ class _$_Media implements _Media {
   final String backdropPath;
   @override
   @JsonKey(name: 'media_type')
-  final String type;
+  final MediaType type;
   @override
   @JsonKey(name: 'vote_average')
   final double voteAverage;
@@ -283,7 +286,7 @@ abstract class _Media implements Media {
           required final String originalTitle,
           @JsonKey(name: 'poster_path') required final String posterPath,
           @JsonKey(name: 'backdrop_path') required final String backdropPath,
-          @JsonKey(name: 'media_type') required final String type,
+          @JsonKey(name: 'media_type') required final MediaType type,
           @JsonKey(name: 'vote_average') required final double voteAverage}) =
       _$_Media;
 
@@ -302,12 +305,15 @@ abstract class _Media implements Media {
   @override
   @JsonKey(name: 'poster_path')
   String get posterPath;
+
   @override
   @JsonKey(name: 'backdrop_path')
   String get backdropPath;
+
   @override
   @JsonKey(name: 'media_type')
-  String get type;
+  MediaType get type;
+
   @override
   @JsonKey(name: 'vote_average')
   double get voteAverage;
