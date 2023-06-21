@@ -30,10 +30,8 @@ mixin _$Media {
   String get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'media_type')
   MediaType get type => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
 
@@ -46,7 +44,6 @@ mixin _$Media {
 abstract class $MediaCopyWith<$Res> {
   factory $MediaCopyWith(Media value, $Res Function(Media) then) =
       _$MediaCopyWithImpl<$Res, Media>;
-
   @useResult
   $Res call(
       {int id,
@@ -305,15 +302,12 @@ abstract class _Media implements Media {
   @override
   @JsonKey(name: 'poster_path')
   String get posterPath;
-
   @override
   @JsonKey(name: 'backdrop_path')
   String get backdropPath;
-
   @override
   @JsonKey(name: 'media_type')
   MediaType get type;
-
   @override
   @JsonKey(name: 'vote_average')
   double get voteAverage;

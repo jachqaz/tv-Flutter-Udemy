@@ -17,8 +17,7 @@ _$_Media _$$_MediaFromJson(Map<String, dynamic> json) => _$_Media(
       voteAverage: (json['vote_average'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_MediaToJson(_$_Media instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_MediaToJson(_$_Media instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'overview': instance.overview,

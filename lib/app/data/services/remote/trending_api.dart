@@ -16,10 +16,7 @@ class TrendingApi {
     final result = await _http.request('/trending/all/${timeWindow.name}',
         onSuccess: (json) {
       final list = List<Json>.from(json['results']);
-      return list
-          .where((e) => e['media_type'] != 'person')
-          .map((e) => Media.fromJson(e))
-          .toList();
+      return getMediaList(list);
     });
     return result.when(
         left: handleHttpFailure, right: (list) => Either.right(list));
