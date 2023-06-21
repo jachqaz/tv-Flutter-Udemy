@@ -21,22 +21,16 @@ Performer _$PerformerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Performer {
   int get id => throw _privateConstructorUsedError;
-
   String get name => throw _privateConstructorUsedError;
-
   double get popularity => throw _privateConstructorUsedError;
-
-  @JsonKey(name: 'orginal_name')
+  @JsonKey(name: 'original_name')
   String get originalName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'profile_path')
   String get profilePath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'known_for', fromJson: knowForFromJson)
   List<Media> get knownFor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PerformerCopyWith<Performer> get copyWith =>
       throw _privateConstructorUsedError;
@@ -52,7 +46,7 @@ abstract class $PerformerCopyWith<$Res> {
       {int id,
       String name,
       double popularity,
-      @JsonKey(name: 'orginal_name') String originalName,
+      @JsonKey(name: 'original_name') String originalName,
       @JsonKey(name: 'profile_path') String profilePath,
       @JsonKey(name: 'known_for', fromJson: knowForFromJson)
       List<Media> knownFor});
@@ -65,7 +59,6 @@ class _$PerformerCopyWithImpl<$Res, $Val extends Performer>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -113,14 +106,13 @@ abstract class _$$_PerformerCopyWith<$Res> implements $PerformerCopyWith<$Res> {
   factory _$$_PerformerCopyWith(
           _$_Performer value, $Res Function(_$_Performer) then) =
       __$$_PerformerCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
       {int id,
       String name,
       double popularity,
-      @JsonKey(name: 'orginal_name') String originalName,
+      @JsonKey(name: 'original_name') String originalName,
       @JsonKey(name: 'profile_path') String profilePath,
       @JsonKey(name: 'known_for', fromJson: knowForFromJson)
       List<Media> knownFor});
@@ -180,7 +172,7 @@ class _$_Performer implements _Performer {
       {required this.id,
       required this.name,
       required this.popularity,
-      @JsonKey(name: 'orginal_name') required this.originalName,
+      @JsonKey(name: 'original_name') required this.originalName,
       @JsonKey(name: 'profile_path') required this.profilePath,
       @JsonKey(name: 'known_for', fromJson: knowForFromJson)
       required final List<Media> knownFor})
@@ -196,13 +188,12 @@ class _$_Performer implements _Performer {
   @override
   final double popularity;
   @override
-  @JsonKey(name: 'orginal_name')
+  @JsonKey(name: 'original_name')
   final String originalName;
   @override
   @JsonKey(name: 'profile_path')
   final String profilePath;
   final List<Media> _knownFor;
-
   @override
   @JsonKey(name: 'known_for', fromJson: knowForFromJson)
   List<Media> get knownFor {
@@ -262,7 +253,7 @@ abstract class _Performer implements Performer {
       {required final int id,
       required final String name,
       required final double popularity,
-      @JsonKey(name: 'orginal_name') required final String originalName,
+      @JsonKey(name: 'original_name') required final String originalName,
       @JsonKey(name: 'profile_path') required final String profilePath,
       @JsonKey(name: 'known_for', fromJson: knowForFromJson)
       required final List<Media> knownFor}) = _$_Performer;
@@ -272,25 +263,20 @@ abstract class _Performer implements Performer {
 
   @override
   int get id;
-
   @override
   String get name;
-
   @override
   double get popularity;
 
   @override
-  @JsonKey(name: 'orginal_name')
+  @JsonKey(name: 'original_name')
   String get originalName;
-
   @override
   @JsonKey(name: 'profile_path')
   String get profilePath;
-
   @override
   @JsonKey(name: 'known_for', fromJson: knowForFromJson)
   List<Media> get knownFor;
-
   @override
   @JsonKey(ignore: true)
   _$$_PerformerCopyWith<_$_Performer> get copyWith =>
