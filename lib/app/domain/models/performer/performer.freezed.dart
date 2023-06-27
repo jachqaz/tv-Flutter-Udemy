@@ -40,7 +40,6 @@ mixin _$Performer {
 abstract class $PerformerCopyWith<$Res> {
   factory $PerformerCopyWith(Performer value, $Res Function(Performer) then) =
       _$PerformerCopyWithImpl<$Res, Performer>;
-
   @useResult
   $Res call(
       {int id,
@@ -267,7 +266,6 @@ abstract class _Performer implements Performer {
   String get name;
   @override
   double get popularity;
-
   @override
   @JsonKey(name: 'original_name')
   String get originalName;

@@ -57,8 +57,9 @@ class PerformerTile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: performer.knownFor
                               .take(3)
-                              .map((media) =>
-                                  TrendingTile(media: media, width: 150 * 0.7))
+                              .map((media) => Expanded(
+                                  child: TrendingTile(
+                                      media: media, width: 150 * 0.7)))
                               .toList(),
                         ),
                       )
