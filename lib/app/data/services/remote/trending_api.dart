@@ -16,7 +16,7 @@ class TrendingApi {
       TimeWindow timeWindow) async {
     final result = await _http.request('/trending/all/${timeWindow.name}',
         onSuccess: (json) {
-      final list = List<Json>.from(json['results1']);
+      final list = List<Json>.from(json['results']);
       return getMediaList(list);
     });
     return result.when(
@@ -27,7 +27,7 @@ class TrendingApi {
       TimeWindow timeWindow) async {
     final result = await _http.request('/trending/person/${timeWindow.name}',
         onSuccess: (json) {
-          final list = List<Json>.from(json['results1']);
+          final list = List<Json>.from(json['results']);
       return list
           .where((e) =>
               e['known_for_department'] == 'Acting' &&
