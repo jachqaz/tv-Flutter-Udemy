@@ -15,8 +15,7 @@ class RequestFail extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Assets.svgs.error404
-          Expanded(child: Assets.images.error404.image()),
+          Expanded(child: Assets.svgs.error404.svg()),
           Text(text ?? 'Request Failed'),
           SizedBox(
             height: 10,
