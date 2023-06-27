@@ -5,6 +5,7 @@ import '../../../../../../domain/either/either.dart';
 import '../../../../../../domain/failures/http_request/http_request_failure.dart';
 import '../../../../../../domain/models/performer/performer.dart';
 import '../../../../../../domain/repository/trending_repository.dart';
+import '../../../../../global/widgets/request_failed.dart';
 import 'performer_tile.dart';
 
 typedef EitherListPerformer = Either<HttpRequestFailure, List<Performer>>;
@@ -37,6 +38,7 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
   Widget build(BuildContext context) {
     return Expanded(
       child: FutureBuilder(
+          key: ValueKey(_future),
           future: _future,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
@@ -45,7 +47,11 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
               );
             }
             return snapshot.data!.when(
-              left: (failure) => Text('Error'),
+              left: (failure) => RequestFail(onRetry: () {
+                setState(() {
+                  _future = context.read<TrendingRepository>().getPerformers();
+                });
+              }),
               right: (list) => Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
@@ -57,32 +63,32 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
                       final performer = list[index];
                       return PerformerTile(performer: performer);
                     },
-                  ),
-                  Positioned(
-                    bottom: 30,
-                    child: AnimatedBuilder(
-                        animation: _pageController,
-                        builder: (_, __) {
-                          final currentCard =
-                              _pageController.page?.toInt() ?? 0;
-                          return Row(
-                            children: List.generate(
-                                list.length,
-                                (index) => Icon(
+                      ),
+                      Positioned(
+                        bottom: 30,
+                        child: AnimatedBuilder(
+                            animation: _pageController,
+                            builder: (_, __) {
+                              final currentCard =
+                                  _pageController.page?.toInt() ?? 0;
+                              return Row(
+                                children: List.generate(
+                                    list.length,
+                                        (index) => Icon(
                                       Icons.circle,
                                       color: currentCard == index
                                           ? Colors.blue
                                           : Colors.white30,
                                       size: 14,
                                     )),
-                          );
-                        }),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      )
+                    ],
                   ),
-                  SizedBox(
-                    height: 10,
-                  )
-                ],
-              ),
             );
           }),
     );

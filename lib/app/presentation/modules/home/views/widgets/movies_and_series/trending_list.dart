@@ -8,6 +8,7 @@ import '../../../../../../domain/enums.dart';
 import '../../../../../../domain/failures/http_request/http_request_failure.dart';
 import '../../../../../../domain/models/media/media.dart';
 import '../../../../../../domain/repository/trending_repository.dart';
+import '../../../../../global/widgets/request_failed.dart';
 
 typedef EitherListMedia = Either<HttpRequestFailure, List<Media>>;
 
@@ -35,14 +36,7 @@ class _TrendingListState extends State<TrendingList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TrendingTimeWindow(
-            timeWindow: _timeWindow,
-            onChanged: (timeWindow) {
-              setState(() {
-                _timeWindow = timeWindow;
-                _future = _repository.getMoviesAndSeries(_timeWindow);
-              });
-            }),
+        TrendingTimeWindow(timeWindow: _timeWindow, onChanged: _updateFuture),
         SizedBox(
           height: 10,
         ),
@@ -60,7 +54,11 @@ class _TrendingListState extends State<TrendingList> {
                       return CircularProgressIndicator();
                     }
                     return snapshot.data!.when(
-                        left: (failure) => Text(failure.toString()),
+                        left: (failure) => RequestFail(
+                              onRetry: () {
+                                _updateFuture(_timeWindow);
+                              },
+                            ),
                         right: (list) {
                           return ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(
@@ -83,5 +81,12 @@ class _TrendingListState extends State<TrendingList> {
         ),
       ],
     );
+  }
+
+  void _updateFuture(TimeWindow timeWindow) {
+    setState(() {
+      _timeWindow = timeWindow;
+      _future = _repository.getMoviesAndSeries(_timeWindow);
+    });
   }
 }
