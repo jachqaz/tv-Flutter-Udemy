@@ -17,22 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   TimeWindow get timeWindow => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TimeWindow timeWindow) loading,
     required TResult Function(TimeWindow timeWindow) failed,
-    required TResult Function(
-            TimeWindow timeWindow, List<Media> moviesAndSeries)
+    required TResult Function(TimeWindow timeWindow,
+            List<Media> moviesAndSeries, List<Performer> performers)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeWindow timeWindow)? loading,
     TResult? Function(TimeWindow timeWindow)? failed,
-    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,12 +39,12 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TimeWindow timeWindow)? loading,
     TResult Function(TimeWindow timeWindow)? failed,
-    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(HomeStateLoading value) loading,
@@ -53,7 +52,6 @@ mixin _$HomeState {
     required TResult Function(HomeStateLoaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(HomeStateLoading value)? loading,
@@ -176,8 +174,8 @@ class _$HomeStateLoading implements HomeStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function(TimeWindow timeWindow) loading,
     required TResult Function(TimeWindow timeWindow) failed,
-    required TResult Function(
-            TimeWindow timeWindow, List<Media> moviesAndSeries)
+    required TResult Function(TimeWindow timeWindow,
+            List<Media> moviesAndSeries, List<Performer> performers)
         loaded,
   }) {
     return loading(timeWindow);
@@ -188,7 +186,8 @@ class _$HomeStateLoading implements HomeStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeWindow timeWindow)? loading,
     TResult? Function(TimeWindow timeWindow)? failed,
-    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
   }) {
     return loading?.call(timeWindow);
@@ -199,7 +198,8 @@ class _$HomeStateLoading implements HomeStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TimeWindow timeWindow)? loading,
     TResult Function(TimeWindow timeWindow)? failed,
-    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
     required TResult orElse(),
   }) {
@@ -324,8 +324,8 @@ class _$HomeStateFailed implements HomeStateFailed {
   TResult when<TResult extends Object?>({
     required TResult Function(TimeWindow timeWindow) loading,
     required TResult Function(TimeWindow timeWindow) failed,
-    required TResult Function(
-            TimeWindow timeWindow, List<Media> moviesAndSeries)
+    required TResult Function(TimeWindow timeWindow,
+            List<Media> moviesAndSeries, List<Performer> performers)
         loaded,
   }) {
     return failed(timeWindow);
@@ -336,7 +336,8 @@ class _$HomeStateFailed implements HomeStateFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeWindow timeWindow)? loading,
     TResult? Function(TimeWindow timeWindow)? failed,
-    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
   }) {
     return failed?.call(timeWindow);
@@ -347,7 +348,8 @@ class _$HomeStateFailed implements HomeStateFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TimeWindow timeWindow)? loading,
     TResult Function(TimeWindow timeWindow)? failed,
-    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
     required TResult orElse(),
   }) {
@@ -411,7 +413,10 @@ abstract class _$$HomeStateLoadedCopyWith<$Res>
       __$$HomeStateLoadedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TimeWindow timeWindow, List<Media> moviesAndSeries});
+  $Res call(
+      {TimeWindow timeWindow,
+      List<Media> moviesAndSeries,
+      List<Performer> performers});
 }
 
 /// @nodoc
@@ -427,6 +432,7 @@ class __$$HomeStateLoadedCopyWithImpl<$Res>
   $Res call({
     Object? timeWindow = null,
     Object? moviesAndSeries = null,
+    Object? performers = null,
   }) {
     return _then(_$HomeStateLoaded(
       timeWindow: null == timeWindow
@@ -437,6 +443,10 @@ class __$$HomeStateLoadedCopyWithImpl<$Res>
           ? _value._moviesAndSeries
           : moviesAndSeries // ignore: cast_nullable_to_non_nullable
               as List<Media>,
+      performers: null == performers
+          ? _value._performers
+          : performers // ignore: cast_nullable_to_non_nullable
+              as List<Performer>,
     ));
   }
 }
@@ -445,8 +455,11 @@ class __$$HomeStateLoadedCopyWithImpl<$Res>
 
 class _$HomeStateLoaded implements HomeStateLoaded {
   _$HomeStateLoaded(
-      {required this.timeWindow, required final List<Media> moviesAndSeries})
-      : _moviesAndSeries = moviesAndSeries;
+      {required this.timeWindow,
+      required final List<Media> moviesAndSeries,
+      required final List<Performer> performers})
+      : _moviesAndSeries = moviesAndSeries,
+        _performers = performers;
 
   @override
   final TimeWindow timeWindow;
@@ -458,9 +471,17 @@ class _$HomeStateLoaded implements HomeStateLoaded {
     return EqualUnmodifiableListView(_moviesAndSeries);
   }
 
+  final List<Performer> _performers;
+  @override
+  List<Performer> get performers {
+    if (_performers is EqualUnmodifiableListView) return _performers;
+// ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_performers);
+  }
+
   @override
   String toString() {
-    return 'HomeState.loaded(timeWindow: $timeWindow, moviesAndSeries: $moviesAndSeries)';
+    return 'HomeState.loaded(timeWindow: $timeWindow, moviesAndSeries: $moviesAndSeries, performers: $performers)';
   }
 
   @override
@@ -471,12 +492,17 @@ class _$HomeStateLoaded implements HomeStateLoaded {
             (identical(other.timeWindow, timeWindow) ||
                 other.timeWindow == timeWindow) &&
             const DeepCollectionEquality()
-                .equals(other._moviesAndSeries, _moviesAndSeries));
+                .equals(other._moviesAndSeries, _moviesAndSeries) &&
+            const DeepCollectionEquality()
+                .equals(other._performers, _performers));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, timeWindow,
-      const DeepCollectionEquality().hash(_moviesAndSeries));
+  int get hashCode => Object.hash(
+      runtimeType,
+      timeWindow,
+      const DeepCollectionEquality().hash(_moviesAndSeries),
+      const DeepCollectionEquality().hash(_performers));
 
   @JsonKey(ignore: true)
   @override
@@ -489,11 +515,11 @@ class _$HomeStateLoaded implements HomeStateLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function(TimeWindow timeWindow) loading,
     required TResult Function(TimeWindow timeWindow) failed,
-    required TResult Function(
-            TimeWindow timeWindow, List<Media> moviesAndSeries)
+    required TResult Function(TimeWindow timeWindow,
+            List<Media> moviesAndSeries, List<Performer> performers)
         loaded,
   }) {
-    return loaded(timeWindow, moviesAndSeries);
+    return loaded(timeWindow, moviesAndSeries, performers);
   }
 
   @override
@@ -501,10 +527,11 @@ class _$HomeStateLoaded implements HomeStateLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeWindow timeWindow)? loading,
     TResult? Function(TimeWindow timeWindow)? failed,
-    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult? Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
   }) {
-    return loaded?.call(timeWindow, moviesAndSeries);
+    return loaded?.call(timeWindow, moviesAndSeries, performers);
   }
 
   @override
@@ -512,12 +539,13 @@ class _$HomeStateLoaded implements HomeStateLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TimeWindow timeWindow)? loading,
     TResult Function(TimeWindow timeWindow)? failed,
-    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries)?
+    TResult Function(TimeWindow timeWindow, List<Media> moviesAndSeries,
+            List<Performer> performers)?
         loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(timeWindow, moviesAndSeries);
+      return loaded(timeWindow, moviesAndSeries, performers);
     }
     return orElse();
   }
@@ -560,11 +588,13 @@ class _$HomeStateLoaded implements HomeStateLoaded {
 abstract class HomeStateLoaded implements HomeState {
   factory HomeStateLoaded(
       {required final TimeWindow timeWindow,
-      required final List<Media> moviesAndSeries}) = _$HomeStateLoaded;
+      required final List<Media> moviesAndSeries,
+      required final List<Performer> performers}) = _$HomeStateLoaded;
 
   @override
   TimeWindow get timeWindow;
   List<Media> get moviesAndSeries;
+  List<Performer> get performers;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateLoadedCopyWith<_$HomeStateLoaded> get copyWith =>

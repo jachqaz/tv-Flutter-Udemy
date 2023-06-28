@@ -29,8 +29,8 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         body: SafeArea(
           child: LayoutBuilder(
-            builder: (_, constraints) => RefreshIndicator(
-              onRefresh: () async {},
+            builder: (context, constraints) => RefreshIndicator(
+              onRefresh: context.read<HomeController>().init,
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
                 child: SizedBox(

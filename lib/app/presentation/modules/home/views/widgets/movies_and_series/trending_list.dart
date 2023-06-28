@@ -36,7 +36,7 @@ class TrendingList extends StatelessWidget {
                   child: state.when(
                       loading: (_) {},
                       failed: (_) {},
-                      loaded: (_, list) {
+                      loaded: (_, list, __) {
                         return ListView.separated(
                           separatorBuilder: (_, __) => SizedBox(
                             width: 10,
