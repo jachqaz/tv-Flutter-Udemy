@@ -17,8 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   bool get loading => throw _privateConstructorUsedError;
-
   List<Media>? get moviesAndSeries => throw _privateConstructorUsedError;
+
+  TimeWindow get timeWindow => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -31,7 +32,8 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
 
   @useResult
-  $Res call({bool loading, List<Media>? moviesAndSeries});
+  $Res call(
+      {bool loading, List<Media>? moviesAndSeries, TimeWindow timeWindow});
 }
 
 /// @nodoc
@@ -41,7 +43,6 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -50,6 +51,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? loading = null,
     Object? moviesAndSeries = freezed,
+    Object? timeWindow = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -60,6 +62,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.moviesAndSeries
           : moviesAndSeries // ignore: cast_nullable_to_non_nullable
               as List<Media>?,
+      timeWindow: null == timeWindow
+          ? _value.timeWindow
+          : timeWindow // ignore: cast_nullable_to_non_nullable
+              as TimeWindow,
     ) as $Val);
   }
 }
@@ -72,7 +78,8 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
 
   @override
   @useResult
-  $Res call({bool loading, List<Media>? moviesAndSeries});
+  $Res call(
+      {bool loading, List<Media>? moviesAndSeries, TimeWindow timeWindow});
 }
 
 /// @nodoc
@@ -88,6 +95,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
   $Res call({
     Object? loading = null,
     Object? moviesAndSeries = freezed,
+    Object? timeWindow = null,
   }) {
     return _then(_$_HomeState(
       loading: null == loading
@@ -98,6 +106,10 @@ class __$$_HomeStateCopyWithImpl<$Res>
           ? _value._moviesAndSeries
           : moviesAndSeries // ignore: cast_nullable_to_non_nullable
               as List<Media>?,
+      timeWindow: null == timeWindow
+          ? _value.timeWindow
+          : timeWindow // ignore: cast_nullable_to_non_nullable
+              as TimeWindow,
     ));
   }
 }
@@ -105,7 +117,10 @@ class __$$_HomeStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HomeState implements _HomeState {
-  _$_HomeState({required this.loading, final List<Media>? moviesAndSeries})
+  _$_HomeState(
+      {required this.loading,
+      final List<Media>? moviesAndSeries,
+      this.timeWindow = TimeWindow.day})
       : _moviesAndSeries = moviesAndSeries;
 
   @override
@@ -122,8 +137,12 @@ class _$_HomeState implements _HomeState {
   }
 
   @override
+  @JsonKey()
+  final TimeWindow timeWindow;
+
+  @override
   String toString() {
-    return 'HomeState(loading: $loading, moviesAndSeries: $moviesAndSeries)';
+    return 'HomeState(loading: $loading, moviesAndSeries: $moviesAndSeries, timeWindow: $timeWindow)';
   }
 
   @override
@@ -133,12 +152,14 @@ class _$_HomeState implements _HomeState {
             other is _$_HomeState &&
             (identical(other.loading, loading) || other.loading == loading) &&
             const DeepCollectionEquality()
-                .equals(other._moviesAndSeries, _moviesAndSeries));
+                .equals(other._moviesAndSeries, _moviesAndSeries) &&
+            (identical(other.timeWindow, timeWindow) ||
+                other.timeWindow == timeWindow));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, loading,
-      const DeepCollectionEquality().hash(_moviesAndSeries));
+      const DeepCollectionEquality().hash(_moviesAndSeries), timeWindow);
 
   @JsonKey(ignore: true)
   @override
@@ -150,13 +171,17 @@ class _$_HomeState implements _HomeState {
 abstract class _HomeState implements HomeState {
   factory _HomeState(
       {required final bool loading,
-      final List<Media>? moviesAndSeries}) = _$_HomeState;
+      final List<Media>? moviesAndSeries,
+      final TimeWindow timeWindow}) = _$_HomeState;
 
   @override
   bool get loading;
 
   @override
   List<Media>? get moviesAndSeries;
+
+  @override
+  TimeWindow get timeWindow;
 
   @override
   @JsonKey(ignore: true)

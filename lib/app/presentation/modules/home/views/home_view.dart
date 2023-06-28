@@ -17,7 +17,16 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => HomeController(HomeState(loading: true)),
+      create: (_) {
+        final controller = HomeController(
+          HomeState(
+            loading: true,
+          ),
+          trendingRepository: context.read(),
+        );
+        controller.init();
+        return controller;
+      },
       child: Scaffold(
         body: SafeArea(
           child: LayoutBuilder(
