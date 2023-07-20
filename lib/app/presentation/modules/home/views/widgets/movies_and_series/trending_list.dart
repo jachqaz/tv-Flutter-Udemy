@@ -6,7 +6,9 @@ import 'package:tv/app/presentation/modules/home/views/widgets/movies_and_series
 import '../../../../../../domain/either/either.dart';
 import '../../../../../../domain/failures/http_request/http_request_failure.dart';
 import '../../../../../../domain/models/media/media.dart';
+import '../../../../../global/widgets/request_failed.dart';
 import '../../../controller/home_controller.dart';
+import '../../../controller/state/home_state.dart';
 
 typedef EitherListMedia = Either<HttpRequestFailure, List<Media>>;
 
@@ -22,7 +24,7 @@ class TrendingList extends StatelessWidget {
       children: [
         TrendingTimeWindow(
           timeWindow: moviesAndSeries.timeWindow,
-          onChanged: (timeWindow) {},
+          onChanged: controller.onTimeWindowChanged,
         ),
         SizedBox(
           height: 10,
@@ -34,8 +36,18 @@ class TrendingList extends StatelessWidget {
               final width = contraints.maxHeight * 0.65;
               return Center(
                   child: moviesAndSeries.when(
-                      loading: (_) {},
-                      failed: (_) {},
+                      loading: (_) =>
+                          Center(child: CircularProgressIndicator()),
+                      failed: (_) {
+                        RequestFail(
+                          onRetry: () {
+                            controller.loadMoviesAndSeries(
+                              moviesAndSeries: MoviesAndSeriesStateLoading(
+                                  moviesAndSeries.timeWindow),
+                            );
+                          },
+                        );
+                      },
                       loaded: (_, list) {
                         return ListView.separated(
                           separatorBuilder: (_, __) => SizedBox(

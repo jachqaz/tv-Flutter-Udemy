@@ -1,3 +1,4 @@
+import '../../../../domain/enums.dart';
 import '../../../../domain/repository/trending_repository.dart';
 import '../../../global/state_notifier.dart';
 import 'state/home_state.dart';
@@ -12,7 +13,19 @@ class HomeController extends StateNotifier<HomeState> {
     await loadPerformers();
   }
 
-  Future<void> loadMoviesAndSeries() async {
+  void onTimeWindowChanged(TimeWindow timeWindow) {
+    if (state.moviesAndSeries.timeWindow != timeWindow) {
+      state = state.copyWith(
+          moviesAndSeries: MoviesAndSeriesState.loading(timeWindow));
+      loadMoviesAndSeries();
+    }
+  }
+
+  Future<void> loadMoviesAndSeries(
+      {MoviesAndSeriesState? moviesAndSeries}) async {
+    if (moviesAndSeries != null) {
+      state = state.copyWith(moviesAndSeries: moviesAndSeries);
+    }
     final result = await trendingRepository.getMoviesAndSeries(
       state.moviesAndSeries.timeWindow,
     );
@@ -29,7 +42,12 @@ class HomeController extends StateNotifier<HomeState> {
     });
   }
 
-  Future<void> loadPerformers() async {
+  Future<void> loadPerformers({
+    PerformersState? performers,
+  }) async {
+    if (performers != null) {
+      state = state.copyWith(performers: performers);
+    }
     final performersResult = await trendingRepository.getPerformers();
     performersResult.when(left: (_) {
       state = state.copyWith(

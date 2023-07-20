@@ -6,6 +6,7 @@ import '../../../../../../domain/failures/http_request/http_request_failure.dart
 import '../../../../../../domain/models/performer/performer.dart';
 import '../../../../../global/widgets/request_failed.dart';
 import '../../../controller/home_controller.dart';
+import '../../../controller/state/home_state.dart';
 import 'performer_tile.dart';
 
 typedef EitherListPerformer = Either<HttpRequestFailure, List<Performer>>;
@@ -32,8 +33,10 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
     final performers = controller.state.performers;
     return Expanded(
         child: performers.when(
-      loading: () => Center(child: CircularProgressIndicator()),
-      failed: () => RequestFail(onRetry: () {}),
+          loading: () => Center(child: CircularProgressIndicator()),
+      failed: () => RequestFail(onRetry: () {
+        controller.loadPerformers(performers: PerformersStateLoading());
+      }),
       loaded: (list) {
         return Stack(
           alignment: Alignment.bottomCenter,
