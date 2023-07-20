@@ -8,13 +8,38 @@ part 'home_state.freezed.dart';
 
 @freezed
 class HomeState with _$HomeState {
-  factory HomeState.loading(TimeWindow timeWindow) = HomeStateLoading;
+  factory HomeState({
+    @Default(
+      MoviesAndSeriesState.loading(TimeWindow.day),
+    )
+    MoviesAndSeriesState moviesAndSeries,
+    @Default(
+      PerformersState.loading(),
+    )
+    PerformersState performers,
+  }) = _HomeState;
+}
 
-  factory HomeState.failed(TimeWindow timeWindow) = HomeStateFailed;
+@freezed
+class MoviesAndSeriesState with _$MoviesAndSeriesState {
+  const factory MoviesAndSeriesState.loading(TimeWindow timeWindow) =
+      MoviesAndSeriesStateLoading;
 
-  factory HomeState.loaded({
+  const factory MoviesAndSeriesState.failed(TimeWindow timeWindow) =
+      MoviesAndSeriesStateFailed;
+
+  const factory MoviesAndSeriesState.loaded({
     required TimeWindow timeWindow,
-    required List<Media> moviesAndSeries,
-    required List<Performer> performers,
-  }) = HomeStateLoaded;
+    required List<Media> list,
+  }) = MoviesAndSeriesStateLoaded;
+}
+
+@freezed
+class PerformersState with _$PerformersState {
+  const factory PerformersState.loading() = PerformersStateLoading;
+
+  const factory PerformersState.failed() = PerformersStateFailed;
+
+  const factory PerformersState.loaded(List<Performer> list) =
+      PerformersStateLoaded;
 }

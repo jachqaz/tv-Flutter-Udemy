@@ -29,21 +29,21 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
   @override
   Widget build(BuildContext context) {
     final HomeController controller = context.watch();
-    final state = controller.state;
+    final performers = controller.state.performers;
     return Expanded(
-        child: state.when(
-      loading: (_) => Center(child: CircularProgressIndicator()),
-      failed: (_) => RequestFail(onRetry: () {}),
-      loaded: (_, __, performers) {
+        child: performers.when(
+      loading: () => Center(child: CircularProgressIndicator()),
+      failed: () => RequestFail(onRetry: () {}),
+      loaded: (list) {
         return Stack(
           alignment: Alignment.bottomCenter,
           children: [
             PageView.builder(
               controller: _pageController,
               scrollDirection: Axis.horizontal,
-              itemCount: performers.length,
+              itemCount: list.length,
               itemBuilder: (context, index) {
-                final performer = performers[index];
+                final performer = list[index];
                 return PerformerTile(performer: performer);
               },
             ),
@@ -55,7 +55,7 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
                     final currentCard = _pageController.page?.toInt() ?? 0;
                     return Row(
                       children: List.generate(
-                          performers.length,
+                          list.length,
                           (index) => Icon(
                                 Icons.circle,
                                 color: currentCard == index

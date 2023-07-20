@@ -16,12 +16,12 @@ class TrendingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeController controller = context.watch();
-    final state = controller.state;
+    final moviesAndSeries = controller.state.moviesAndSeries;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TrendingTimeWindow(
-          timeWindow: state.timeWindow,
+          timeWindow: moviesAndSeries.timeWindow,
           onChanged: (timeWindow) {},
         ),
         SizedBox(
@@ -33,10 +33,10 @@ class TrendingList extends StatelessWidget {
             builder: (context, contraints) {
               final width = contraints.maxHeight * 0.65;
               return Center(
-                  child: state.when(
+                  child: moviesAndSeries.when(
                       loading: (_) {},
                       failed: (_) {},
-                      loaded: (_, list, __) {
+                      loaded: (_, list) {
                         return ListView.separated(
                           separatorBuilder: (_, __) => SizedBox(
                             width: 10,
