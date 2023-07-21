@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   MoviesAndSeriesState get moviesAndSeries =>
       throw _privateConstructorUsedError;
-
   PerformersState get performers => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,12 +29,10 @@ mixin _$HomeState {
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
-
   @useResult
   $Res call({MoviesAndSeriesState moviesAndSeries, PerformersState performers});
 
   $MoviesAndSeriesStateCopyWith<$Res> get moviesAndSeries;
-
   $PerformersStateCopyWith<$Res> get performers;
 }
 
@@ -46,7 +43,6 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -90,14 +86,12 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   factory _$$_HomeStateCopyWith(
           _$_HomeState value, $Res Function(_$_HomeState) then) =
       __$$_HomeStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({MoviesAndSeriesState moviesAndSeries, PerformersState performers});
 
   @override
   $MoviesAndSeriesStateCopyWith<$Res> get moviesAndSeries;
-
   @override
   $PerformersStateCopyWith<$Res> get performers;
 }
@@ -177,10 +171,8 @@ abstract class _HomeState implements HomeState {
 
   @override
   MoviesAndSeriesState get moviesAndSeries;
-
   @override
   PerformersState get performers;
-
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
@@ -190,7 +182,6 @@ abstract class _HomeState implements HomeState {
 /// @nodoc
 mixin _$MoviesAndSeriesState {
   TimeWindow get timeWindow => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TimeWindow timeWindow) loading,
@@ -198,7 +189,6 @@ mixin _$MoviesAndSeriesState {
     required TResult Function(TimeWindow timeWindow, List<Media> list) loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeWindow timeWindow)? loading,
@@ -221,7 +211,6 @@ mixin _$MoviesAndSeriesState {
     required TResult Function(MoviesAndSeriesStateLoaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MoviesAndSeriesStateLoading value)? loading,
@@ -258,7 +247,7 @@ class _$MoviesAndSeriesStateCopyWithImpl<$Res,
     implements $MoviesAndSeriesStateCopyWith<$Res> {
   _$MoviesAndSeriesStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;
@@ -629,7 +618,7 @@ class _$MoviesAndSeriesStateLoaded implements MoviesAndSeriesStateLoaded {
   @override
   List<Media> get list {
     if (_list is EqualUnmodifiableListView) return _list;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_list);
   }
 
@@ -1064,7 +1053,7 @@ class _$PerformersStateLoaded implements PerformersStateLoaded {
   @override
   List<Performer> get list {
     if (_list is EqualUnmodifiableListView) return _list;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_list);
   }
 
