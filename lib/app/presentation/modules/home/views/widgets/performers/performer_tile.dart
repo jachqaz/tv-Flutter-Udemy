@@ -13,7 +13,7 @@ class PerformerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Stack(
@@ -30,8 +30,8 @@ class PerformerTile extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: Container(
-                padding: EdgeInsets.all(15).copyWith(bottom: 40),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.all(15).copyWith(bottom: 40),
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -42,12 +42,12 @@ class PerformerTile extends StatelessWidget {
                   children: [
                     Text(
                       performer.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     if (performer.knownFor.isNotEmpty)
@@ -71,6 +71,5 @@ class PerformerTile extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

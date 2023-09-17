@@ -11,13 +11,12 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SignInController>(
-      create: (BuildContext context) => SignInController(
-          SignInState(),
+      create: (BuildContext context) => SignInController(const SignInState(),
           authenticationRepository: context.read()),
       child: Scaffold(
           body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Form(
             child: Builder(builder: (context) {
               final controller = Provider.of<SignInController>(context);
@@ -31,7 +30,7 @@ class SignInView extends StatelessWidget {
                       onChanged: (text) {
                         controller.onUsernameChanged(text);
                       },
-                      decoration: InputDecoration(hintText: 'UserName'),
+                      decoration: const InputDecoration(hintText: 'UserName'),
                       validator: (text) {
                         text = text?.trim().toLowerCase() ?? '';
                         if (text.isEmpty) {
@@ -40,7 +39,7 @@ class SignInView extends StatelessWidget {
                         return null;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -48,7 +47,7 @@ class SignInView extends StatelessWidget {
                         onChanged: (text) {
                           controller.onPasswordChanged(text);
                         },
-                        decoration: InputDecoration(hintText: 'Password'),
+                        decoration: const InputDecoration(hintText: 'Password'),
                         validator: (text) {
                           text = text?.replaceAll(' ', '') ?? '';
                           if (text.length < 4) {
@@ -56,10 +55,10 @@ class SignInView extends StatelessWidget {
                           }
                           return null;
                         }),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    SubmitButton(),
+                    const SubmitButton(),
                   ],
                 ),
               );

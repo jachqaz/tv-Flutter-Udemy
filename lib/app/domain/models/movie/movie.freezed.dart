@@ -21,33 +21,23 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Movie {
   int get id => throw _privateConstructorUsedError;
-
   List<Genre> get genres => throw _privateConstructorUsedError;
-
   String get overview => throw _privateConstructorUsedError;
-
   int get runtime => throw _privateConstructorUsedError;
-
   @JsonKey(name: "poster_path")
   String get posterPath => throw _privateConstructorUsedError;
-
   @JsonKey(name: "release_date")
   DateTime get releaseDate => throw _privateConstructorUsedError;
-
   @JsonKey(name: "vote_average")
   double get voteAverage => throw _privateConstructorUsedError;
-
   @JsonKey(readValue: readTitleValue)
   String get title => throw _privateConstructorUsedError;
-
   @JsonKey(readValue: readOriginalTitleValue)
   String get originalTitle => throw _privateConstructorUsedError;
-
   @JsonKey(name: "backdrop_path")
   String get backdropPath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MovieCopyWith<Movie> get copyWith => throw _privateConstructorUsedError;
 }
@@ -56,7 +46,6 @@ mixin _$Movie {
 abstract class $MovieCopyWith<$Res> {
   factory $MovieCopyWith(Movie value, $Res Function(Movie) then) =
       _$MovieCopyWithImpl<$Res, Movie>;
-
   @useResult
   $Res call(
       {int id,
@@ -78,7 +67,6 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -145,7 +133,6 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
 abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
   factory _$$_MovieCopyWith(_$_Movie value, $Res Function(_$_Movie) then) =
       __$$_MovieCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -248,7 +235,6 @@ class _$_Movie implements _Movie {
   @override
   final int id;
   final List<Genre> _genres;
-
   @override
   List<Genre> get genres {
     if (_genres is EqualUnmodifiableListView) return _genres;
@@ -337,16 +323,15 @@ class _$_Movie implements _Movie {
 }
 
 abstract class _Movie implements Movie {
-  factory _Movie(
-          {required final int id,
-          required final List<Genre> genres,
-          required final String overview,
-          required final int runtime,
-          @JsonKey(name: "poster_path") required final String posterPath,
-          @JsonKey(name: "release_date") required final DateTime releaseDate,
-          @JsonKey(name: "vote_average") required final double voteAverage,
-          @JsonKey(readValue: readTitleValue) required final String title,
-          @JsonKey(readValue: readOriginalTitleValue)
+  factory _Movie({required final int id,
+    required final List<Genre> genres,
+    required final String overview,
+    required final int runtime,
+    @JsonKey(name: "poster_path") required final String posterPath,
+    @JsonKey(name: "release_date") required final DateTime releaseDate,
+    @JsonKey(name: "vote_average") required final double voteAverage,
+    @JsonKey(readValue: readTitleValue) required final String title,
+    @JsonKey(readValue: readOriginalTitleValue)
           required final String originalTitle,
           @JsonKey(name: "backdrop_path") required final String backdropPath}) =
       _$_Movie;
@@ -355,40 +340,30 @@ abstract class _Movie implements Movie {
 
   @override
   int get id;
-
   @override
   List<Genre> get genres;
-
   @override
   String get overview;
-
   @override
   int get runtime;
-
   @override
   @JsonKey(name: "poster_path")
   String get posterPath;
-
   @override
   @JsonKey(name: "release_date")
   DateTime get releaseDate;
-
   @override
   @JsonKey(name: "vote_average")
   double get voteAverage;
-
   @override
   @JsonKey(readValue: readTitleValue)
   String get title;
-
   @override
   @JsonKey(readValue: readOriginalTitleValue)
   String get originalTitle;
-
   @override
   @JsonKey(name: "backdrop_path")
   String get backdropPath;
-
   @override
   @JsonKey(ignore: true)
   _$$_MovieCopyWith<_$_Movie> get copyWith =>

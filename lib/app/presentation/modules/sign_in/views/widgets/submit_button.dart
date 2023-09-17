@@ -11,9 +11,9 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SignInController controller = Provider.of(context);
-    if (controller.state.fetching)
-      return CircularProgressIndicator();
-    else
+    if (controller.state.fetching) {
+      return const CircularProgressIndicator();
+    } else {
       return MaterialButton(
         onPressed: () {
           final isValid = Form.of(context).validate();
@@ -22,8 +22,9 @@ class SubmitButton extends StatelessWidget {
           }
         },
         color: Colors.blue,
-        child: Text('Sign In'),
+        child: const Text('Sign In'),
       );
+    }
   }
 
   Future<void> _submit(BuildContext context) async {

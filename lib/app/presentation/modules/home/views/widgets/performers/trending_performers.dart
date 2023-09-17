@@ -12,7 +12,7 @@ import 'performer_tile.dart';
 typedef EitherListPerformer = Either<HttpRequestFailure, List<Performer>>;
 
 class TrendingPerformers extends StatefulWidget {
-  TrendingPerformers({super.key});
+  const TrendingPerformers({super.key});
 
   @override
   State<TrendingPerformers> createState() => _TrendingPerformersState();
@@ -33,9 +33,9 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
     final performers = controller.state.performers;
     return Expanded(
         child: performers.when(
-          loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => const Center(child: CircularProgressIndicator()),
       failed: () => RequestFail(onRetry: () {
-        controller.loadPerformers(performers: PerformersStateLoading());
+        controller.loadPerformers(performers: const PerformersStateLoading());
       }),
       loaded: (list) {
         return Stack(
@@ -69,7 +69,7 @@ class _TrendingPerformersState extends State<TrendingPerformers> {
                     );
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             )
           ],

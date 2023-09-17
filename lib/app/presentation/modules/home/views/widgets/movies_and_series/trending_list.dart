@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tv/app/presentation/modules/home/views/widgets/movies_and_series/trending_tile.dart';
-import 'package:tv/app/presentation/modules/home/views/widgets/movies_and_series/trending_time_window.dart';
 
 import '../../../../../../domain/either/either.dart';
 import '../../../../../../domain/failures/http_request/http_request_failure.dart';
@@ -9,11 +7,13 @@ import '../../../../../../domain/models/media/media.dart';
 import '../../../../../global/widgets/request_failed.dart';
 import '../../../controller/home_controller.dart';
 import '../../../controller/state/home_state.dart';
+import 'trending_tile.dart';
+import 'trending_time_window.dart';
 
 typedef EitherListMedia = Either<HttpRequestFailure, List<Media>>;
 
 class TrendingList extends StatelessWidget {
-  TrendingList({super.key});
+  const TrendingList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class TrendingList extends StatelessWidget {
           timeWindow: moviesAndSeries.timeWindow,
           onChanged: controller.onTimeWindowChanged,
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         AspectRatio(
@@ -37,7 +37,7 @@ class TrendingList extends StatelessWidget {
               return Center(
                   child: moviesAndSeries.when(
                       loading: (_) =>
-                          Center(child: CircularProgressIndicator()),
+                          const Center(child: CircularProgressIndicator()),
                       failed: (_) {
                         RequestFail(
                           onRetry: () {
@@ -47,13 +47,14 @@ class TrendingList extends StatelessWidget {
                             );
                           },
                         );
+                        return null;
                       },
                       loaded: (_, list) {
                         return ListView.separated(
-                          separatorBuilder: (_, __) => SizedBox(
+                          separatorBuilder: (_, __) => const SizedBox(
                             width: 10,
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (_, index) {
                             final media = list[index];

@@ -31,10 +31,10 @@ class _HomeViewState extends State<HomeView> {
             builder: (context, constraints) => RefreshIndicator(
               onRefresh: context.read<HomeController>().init,
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: SizedBox(
                   height: constraints.maxHeight,
-                  child: Column(
+                  child: const Column(
                     children: [
                       SizedBox(
                         height: 10,

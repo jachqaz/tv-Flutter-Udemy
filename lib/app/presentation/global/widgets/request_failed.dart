@@ -17,15 +17,15 @@ class RequestFail extends StatelessWidget {
         children: [
           Expanded(child: Assets.svgs.error404.svg()),
           Text(text ?? 'Request Failed'),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           MaterialButton(
             onPressed: onRetry,
-            child: Text('Retry'),
             color: Colors.blue,
+            child: const Text('Retry'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],

@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:tv/app/my_app.dart';
 
 import 'app/data/http/http.dart';
 import 'app/data/repositories_implementation/account_repository_impl.dart';
@@ -19,10 +18,11 @@ import 'app/domain/repository/account_repository.dart';
 import 'app/domain/repository/authentication_repository.dart';
 import 'app/domain/repository/connectivity_repository.dart';
 import 'app/domain/repository/trending_repository.dart';
+import 'app/my_app.dart';
 import 'app/presentation/global/controllers/session_controller.dart';
 
 void main() {
-  final sessionService = SessionService(FlutterSecureStorage());
+  final sessionService = SessionService(const FlutterSecureStorage());
   final http = Http(
       client: Client(),
       baseUrl: 'https://api.themoviedb.org/3',
@@ -55,6 +55,6 @@ void main() {
                 authenticationRepository: context.read(),
               )),
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }

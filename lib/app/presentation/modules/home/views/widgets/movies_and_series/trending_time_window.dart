@@ -15,31 +15,31 @@ class TrendingTimeWindow extends StatelessWidget {
       padding: const EdgeInsets.only(left: 15),
       child: Row(
         children: [
-          Text(
+          const Text(
             'TRENDING',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Material(
-              color: Color(0Xfff0f0f0),
+              color: const Color(0Xfff0f0f0),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: DropdownButton<TimeWindow>(
                     value: timeWindow,
                     isDense: true,
-                    underline: SizedBox(),
-                    items: [
+                    underline: const SizedBox(),
+                    items: const [
                       DropdownMenuItem(
-                        child: Text('Last 24h'),
                         value: TimeWindow.day,
+                        child: Text('Last 24h'),
                       ),
                       DropdownMenuItem(
-                        child: Text('Last week'),
                         value: TimeWindow.week,
+                        child: Text('Last week'),
                       ),
                     ],
                     onChanged: (mtimeWindow) {
@@ -50,7 +50,7 @@ class TrendingTimeWindow extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
         ],

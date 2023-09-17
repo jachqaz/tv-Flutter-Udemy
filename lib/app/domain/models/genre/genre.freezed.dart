@@ -21,11 +21,9 @@ Genre _$GenreFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Genre {
   int get id => throw _privateConstructorUsedError;
-
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $GenreCopyWith<Genre> get copyWith => throw _privateConstructorUsedError;
 }
@@ -34,7 +32,6 @@ mixin _$Genre {
 abstract class $GenreCopyWith<$Res> {
   factory $GenreCopyWith(Genre value, $Res Function(Genre) then) =
       _$GenreCopyWithImpl<$Res, Genre>;
-
   @useResult
   $Res call({int id, String name});
 }
@@ -46,7 +43,6 @@ class _$GenreCopyWithImpl<$Res, $Val extends Genre>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -73,7 +69,6 @@ class _$GenreCopyWithImpl<$Res, $Val extends Genre>
 abstract class _$$_GenreCopyWith<$Res> implements $GenreCopyWith<$Res> {
   factory _$$_GenreCopyWith(_$_Genre value, $Res Function(_$_Genre) then) =
       __$$_GenreCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int id, String name});
@@ -157,10 +152,8 @@ abstract class _Genre implements Genre {
 
   @override
   int get id;
-
   @override
   String get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_GenreCopyWith<_$_Genre> get copyWith =>

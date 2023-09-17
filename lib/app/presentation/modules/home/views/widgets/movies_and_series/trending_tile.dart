@@ -51,7 +51,7 @@ class TrendingTile extends StatelessWidget {
                             media.voteAverage.toStringAsFixed(1),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
                         Chip(
