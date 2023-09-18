@@ -274,10 +274,11 @@ class _$_Media implements _Media {
 }
 
 abstract class _Media implements Media {
-  factory _Media({required final int id,
-    @JsonKey(readValue: readTitleValue) required final String title,
-    required final String overview,
-    @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
+  factory _Media(
+          {required final int id,
+          @JsonKey(readValue: readTitleValue) required final String title,
+          required final String overview,
+          @JsonKey(name: 'original_title', readValue: readOriginalTitleValue)
           required final String originalTitle,
           @JsonKey(name: 'poster_path') required final String posterPath,
           @JsonKey(name: 'backdrop_path') required final String backdropPath,

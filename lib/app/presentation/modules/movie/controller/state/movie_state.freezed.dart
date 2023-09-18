@@ -23,7 +23,6 @@ mixin _$MovieState {
     required TResult Function(Movie movie) loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
@@ -39,7 +38,6 @@ mixin _$MovieState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MovieStateLoading value) loading,
@@ -47,7 +45,6 @@ mixin _$MovieState {
     required TResult Function(MovieStateLoaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MovieStateLoading value)? loading,
