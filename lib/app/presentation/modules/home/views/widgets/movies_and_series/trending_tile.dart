@@ -21,7 +21,8 @@ class TrendingTile extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (media.type == MediaType.movie) {
-          Navigator.pushNamed(context, Routes.movie, arguments: media.id);
+          // Navigator.pushNamed(context, Routes.movie, arguments: media.id);
+          Navigator.pushNamed(context, '${Routes.movie}/${media.id}');
         }
       },
       child: ClipRRect(
