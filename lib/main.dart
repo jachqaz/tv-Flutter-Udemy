@@ -8,15 +8,18 @@ import 'app/data/http/http.dart';
 import 'app/data/repositories_implementation/account_repository_impl.dart';
 import 'app/data/repositories_implementation/authentication_repository_impl.dart';
 import 'app/data/repositories_implementation/connectivity_repository_impl.dart';
+import 'app/data/repositories_implementation/movies_repository_impl.dart';
 import 'app/data/repositories_implementation/trending_repository_impl.dart';
 import 'app/data/services/local/session_service.dart';
 import 'app/data/services/remote/account_api.dart';
 import 'app/data/services/remote/authentication_api.dart';
 import 'app/data/services/remote/internet_checker.dart';
+import 'app/data/services/remote/movies_api.dart';
 import 'app/data/services/remote/trending_api.dart';
 import 'app/domain/repository/account_repository.dart';
 import 'app/domain/repository/authentication_repository.dart';
 import 'app/domain/repository/connectivity_repository.dart';
+import 'app/domain/repository/movies_repository.dart';
 import 'app/domain/repository/trending_repository.dart';
 import 'app/my_app.dart';
 import 'app/presentation/global/controllers/session_controller.dart';
@@ -48,6 +51,11 @@ void main() {
       Provider<TrendingRepository>(
         create: (context) => TrendingRepositoryImpl(
           TrendingApi(http),
+        ),
+      ),
+      Provider<MoviesRepository>(
+        create: (context) => MoviesRepositoryImpl(
+          MoviesApi(http),
         ),
       ),
       ChangeNotifierProvider(
