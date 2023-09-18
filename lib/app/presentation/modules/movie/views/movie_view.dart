@@ -23,11 +23,11 @@ class MovieView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(),
           body: controller.state.when(
-              loading: () => CircularProgressIndicator(),
+              loading: () => const CircularProgressIndicator(),
               failed: () => RequestFail(
                     onRetry: () => controller.init(),
                   ),
-              loaded: (movie) => Center(
+              loaded: (movie) => const Center(
                     child: Text('MOVIE'),
                   )),
         );
