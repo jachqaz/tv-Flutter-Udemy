@@ -23,23 +23,11 @@ class FavoritesAppBar extends StatelessWidget implements PreferredSizeWidget {
         indicatorSize: TabBarIndicatorSize.label,
         labelColor: Colors.black,
         tabs: [
-          SizedBox(
-            height: 30,
-            child: Tab(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Text('Movies'),
-              ),
-            ),
+          Tab(
+            child: Text('Movies'),
           ),
-          SizedBox(
-            height: 30,
-            child: Tab(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Text('Series'),
-              ),
-            ),
+          Tab(
+            child: Text('Series'),
           ),
         ],
       ),
