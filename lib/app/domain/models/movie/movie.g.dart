@@ -18,7 +18,7 @@ _$_Movie _$$_MovieFromJson(Map<String, dynamic> json) => _$_Movie(
       voteAverage: (json['vote_average'] as num).toDouble(),
       title: readTitleValue(json, 'title') as String,
       originalTitle: readOriginalTitleValue(json, 'originalTitle') as String,
-      backdropPath: json['backdrop_path'] as String,
+      backdropPath: json['backdrop_path'] as String?,
     );
 
 Map<String, dynamic> _$$_MovieToJson(_$_Movie instance) => <String, dynamic>{
