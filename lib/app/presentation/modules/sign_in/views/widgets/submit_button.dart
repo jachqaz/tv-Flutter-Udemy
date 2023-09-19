@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../global/controllers/favorites/favorites_controller.dart';
 import '../../../../global/controllers/session_controller.dart';
 import '../../../../routes/routes.dart';
 import '../../controller/sign_in_controller.dart';
@@ -45,7 +46,9 @@ class SubmitButton extends StatelessWidget {
           .showSnackBar(SnackBar(content: Text(message)));
     }, right: (user) {
       final SessionController sessionController = context.read();
+      final FavoritesController favoritesController = context.read();
       sessionController.setUser(user);
+      favoritesController.init();
       Navigator.pushReplacementNamed(context, Routes.home);
     });
   }

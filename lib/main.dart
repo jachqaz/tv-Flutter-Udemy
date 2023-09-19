@@ -34,7 +34,7 @@ void main() {
       client: Client(),
       baseUrl: 'https://api.themoviedb.org/3',
       apiKey: 'f16c8506cda4e08300b9149a1ff5cd59');
-  final accountApi = AccountApi(http);
+  final accountApi = AccountApi(http, sessionService);
   runApp(MultiProvider(
     providers: [
       Provider<AccountRepository>(
@@ -70,6 +70,7 @@ void main() {
       ChangeNotifierProvider(
         create: (context) => FavoritesController(
           FavoritesState.loading(),
+          accountRepository: context.read(),
         ),
       ),
     ],
