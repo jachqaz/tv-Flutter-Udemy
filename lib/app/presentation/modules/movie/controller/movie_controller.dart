@@ -10,6 +10,7 @@ class MovieController extends StateNotifier<MovieState> {
       {required this.moviesRepository, required this.movieId});
 
   Future<void> init() async {
+    state = MovieState.loading();
     final result = await moviesRepository.getMovieById(movieId);
     state = result.when(
         left: (_) => MovieState.failed(),

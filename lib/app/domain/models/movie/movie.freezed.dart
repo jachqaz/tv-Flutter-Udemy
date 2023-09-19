@@ -323,16 +323,15 @@ class _$_Movie implements _Movie {
 }
 
 abstract class _Movie implements Movie {
-  factory _Movie(
-          {required final int id,
-          required final List<Genre> genres,
-          required final String overview,
-          required final int runtime,
-          @JsonKey(name: "poster_path") required final String posterPath,
-          @JsonKey(name: "release_date") required final DateTime releaseDate,
-          @JsonKey(name: "vote_average") required final double voteAverage,
-          @JsonKey(readValue: readTitleValue) required final String title,
-          @JsonKey(readValue: readOriginalTitleValue)
+  factory _Movie({required final int id,
+    required final List<Genre> genres,
+    required final String overview,
+    required final int runtime,
+    @JsonKey(name: "poster_path") required final String posterPath,
+    @JsonKey(name: "release_date") required final DateTime releaseDate,
+    @JsonKey(name: "vote_average") required final double voteAverage,
+    @JsonKey(readValue: readTitleValue) required final String title,
+    @JsonKey(readValue: readOriginalTitleValue)
           required final String originalTitle,
           @JsonKey(name: "backdrop_path") required final String backdropPath}) =
       _$_Movie;

@@ -24,7 +24,6 @@ mixin _$FavoritesState {
         loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
@@ -40,7 +39,6 @@ mixin _$FavoritesState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FavoritesStateLoading value) loading,
@@ -48,7 +46,6 @@ mixin _$FavoritesState {
     required TResult Function(FavoritesStateLoaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FavoritesStateLoading value)? loading,
@@ -351,7 +348,7 @@ class _$FavoritesStateLoaded implements FavoritesStateLoaded {
   @override
   Map<int, Media> get movies {
     if (_movies is EqualUnmodifiableMapView) return _movies;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_movies);
   }
 
@@ -359,7 +356,7 @@ class _$FavoritesStateLoaded implements FavoritesStateLoaded {
   @override
   Map<int, Media> get series {
     if (_series is EqualUnmodifiableMapView) return _series;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_series);
   }
 

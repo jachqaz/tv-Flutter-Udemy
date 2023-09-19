@@ -12,7 +12,7 @@ _$_Media _$$_MediaFromJson(Map<String, dynamic> json) => _$_Media(
       overview: json['overview'] as String,
       originalTitle: readOriginalTitleValue(json, 'original_title') as String,
       posterPath: json['poster_path'] as String,
-      backdropPath: json['backdrop_path'] as String,
+      backdropPath: json['backdrop_path'] as String?,
       type: $enumDecode(_$MediaTypeEnumMap, json['media_type']),
       voteAverage: (json['vote_average'] as num).toDouble(),
     );
