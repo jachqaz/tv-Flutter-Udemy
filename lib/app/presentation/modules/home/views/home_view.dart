@@ -36,7 +36,9 @@ class _HomeViewState extends State<HomeView> {
                   color: Colors.black,
                 )),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.profile);
+                },
                 icon: Icon(
                   Icons.person,
                   color: Colors.black,

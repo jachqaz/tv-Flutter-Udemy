@@ -5,6 +5,7 @@ import '../modules/home/views/home_view.dart';
 import '../modules/offline/offline_view.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../profile/views/profile_view.dart';
 import 'routes.dart';
 
 Map<String, Widget Function(BuildContext)> get appRoutes {
@@ -14,5 +15,6 @@ Map<String, Widget Function(BuildContext)> get appRoutes {
     Routes.home: (context) => const HomeView(),
     Routes.offline: (context) => const OfflineView(),
     Routes.favorites: (context) => const FavoritesView(),
+    Routes.profile: (context) => const ProfileView(),
   };
 }

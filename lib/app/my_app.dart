@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'generated/assets.gen.dart';
+import 'presentation/global/controllers/theme_controller.dart';
 import 'presentation/modules/movie/views/movie_view.dart';
 import 'presentation/routes/app_routes.dart';
 import 'presentation/routes/routes.dart';
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = context.watch();
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
@@ -17,6 +20,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: Routes.splash,
         routes: appRoutes,
+        theme: themeController.darkMode ? ThemeData.dark() : ThemeData.light(),
         onUnknownRoute: (_) => MaterialPageRoute(
             builder: (_) => Scaffold(
                   body: Center(
