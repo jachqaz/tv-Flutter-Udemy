@@ -20,7 +20,10 @@ class MovieAppBar extends StatelessWidget implements PreferredSizeWidget {
             orElse: () => SizedBox(),
             loaded: (favoritesState) => IconButton(
               onPressed: () {
-                markAsFavorite(context, movieState.movie.toMedia());
+                markAsFavorite(
+                    context: context,
+                    media: movieState.movie.toMedia(),
+                    mounted: () => controller.mounted);
               },
               icon: Icon(
                 favoritesState.movies.containsKey(movieState.movie.id)
