@@ -9,6 +9,7 @@ part 'movie.g.dart';
 
 @freezed
 class Movie with _$Movie {
+  Movie._();
   factory Movie({
     required int id,
     required List<Genre> genres,
@@ -21,6 +22,18 @@ class Movie with _$Movie {
     @JsonKey(readValue: readOriginalTitleValue) required String originalTitle,
     @JsonKey(name: "backdrop_path") required String? backdropPath,
   }) = _Movie;
+
+  Media toMedia() {
+    return Media(
+        id: id,
+        title: title,
+        overview: overview,
+        originalTitle: originalTitle,
+        posterPath: posterPath,
+        backdropPath: backdropPath,
+        type: MediaType.movie,
+        voteAverage: voteAverage);
+  }
 
   factory Movie.fromJson(Json json) => _$MovieFromJson(json);
 }

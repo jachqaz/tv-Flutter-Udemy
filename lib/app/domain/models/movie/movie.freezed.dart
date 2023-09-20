@@ -215,7 +215,7 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Movie implements _Movie {
+class _$_Movie extends _Movie {
   _$_Movie(
       {required this.id,
       required final List<Genre> genres,
@@ -227,7 +227,8 @@ class _$_Movie implements _Movie {
       @JsonKey(readValue: readTitleValue) required this.title,
       @JsonKey(readValue: readOriginalTitleValue) required this.originalTitle,
       @JsonKey(name: "backdrop_path") required this.backdropPath})
-      : _genres = genres;
+      : _genres = genres,
+        super._();
 
   factory _$_Movie.fromJson(Map<String, dynamic> json) =>
       _$$_MovieFromJson(json);
@@ -322,7 +323,7 @@ class _$_Movie implements _Movie {
   }
 }
 
-abstract class _Movie implements Movie {
+abstract class _Movie extends Movie {
   factory _Movie(
       {required final int id,
       required final List<Genre> genres,
@@ -336,6 +337,8 @@ abstract class _Movie implements Movie {
       required final String originalTitle,
       @JsonKey(name: "backdrop_path")
       required final String? backdropPath}) = _$_Movie;
+
+  _Movie._() : super._();
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
 
